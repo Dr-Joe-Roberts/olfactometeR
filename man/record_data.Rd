@@ -7,7 +7,7 @@
 record_data(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{Leave blank.}
 }
 \description{
 Create a .txt file containing the duration of time a study subject spends

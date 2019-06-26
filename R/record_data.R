@@ -6,7 +6,7 @@
 #' console to enter experimental details required for naming the .txt file and
 #' for further analysis.
 #'
-#' @param
+#' @param x  Leave blank.
 #'
 #' @return
 #' @export .txt file
