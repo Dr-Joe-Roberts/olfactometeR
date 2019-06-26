@@ -14,9 +14,6 @@
 #' @examples
 #' record_data()
 record_data = function(x) {
-  suppressPackageStartupMessages({
-    require(tictoc) #load required package
-  })
 
   user = readline("User initials: ")
 
@@ -33,11 +30,11 @@ record_data = function(x) {
 
   while (T) {
     #open infinite while loop
-    tic()           #start timer
+    tictoc::tic()           #start timer
     olfactometer_zone = readline("Olfactometer zone: ")  #allow for entry of state
     if (olfactometer_zone %in% 1:5) {
       #check if it's acceptable
-      elapsed = toc()            #if it is then end timer and record data
+      elapsed = tictoc::toc()            #if it is then end timer and record data
       write.table(
         cbind(
           experiment,
