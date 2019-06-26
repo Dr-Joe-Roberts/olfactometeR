@@ -14,11 +14,24 @@
 #' \dontrun{
 #' record_data()
 #'
-#' 5
-#' 4
-#' 3
-#' 5
-#' t
+#' User initials: JR
+#' Year: 2019
+#' Experiment number: 1
+#' Replicate number: 1
+#' Olfactometer arm containing treatment: 2
+#' Press s to begin recording data: s
+#' Olfactometer zone: 5
+# '16.3 sec elapsed
+#' Olfactometer zone: 4
+#' 13.7 sec elapsed
+#' Olfactometer zone: 2
+#' 6.19 sec elapsed
+#' Olfactometer zone: 5
+#' 6.61 sec elapsed
+#' Olfactometer zone: 2
+#' 45.67 sec elapsed
+#' Olfactometer zone: t
+#'
 #' }
 #' @export
 
