@@ -13,6 +13,7 @@
 #'
 #' @examples
 #' record_data()
+
 record_data = function(x) {
 
   user = readline("User initials: ")
@@ -35,7 +36,7 @@ record_data = function(x) {
     if (olfactometer_zone %in% 1:5) {
       #check if it's acceptable
       elapsed = tictoc::toc()            #if it is then end timer and record data
-      write.table(
+      utils::write.table(
         cbind(
           experiment,
           replicate,
