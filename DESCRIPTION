@@ -1,13 +1,15 @@
 Package: olfactometeR
-Title: What the Package Does (One Line, Title Case)
+Title: Four-Arm Olfactometer Data Collection and Analysis
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Joe",
+           family = "Roberts",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "joe.mark.roberts@gmail.com",
+           comment = c(ORCID = "0000-0002-9576-9239"))
+Description: Collecting and analysing data from four-arm olfactometer experiments can be frustrating as 
+    the tools currently availble are either too expensive or outdated. The olfactometeR package aims to 
+    address these issues.
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
