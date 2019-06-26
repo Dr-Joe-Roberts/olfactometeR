@@ -1,3 +1,18 @@
+#' Record four-arm olfactometer data
+#'
+#' Create a .txt file containing the duration of time a study subject spends
+#' in each of the five olfactometer zones and the number of times each zone
+#' was entered. When this function is called the user will be prompted in the
+#' console to enter experimental details required for naming the .txt file and
+#' for further analysis.
+#'
+#' @param x
+#'
+#' @return
+#' @export .txt file
+#'
+#' @examples
+#' record_data()
 record_data = function(x) {
   suppressPackageStartupMessages({
     require(tictoc) #load required package
