@@ -9,7 +9,7 @@
 #' @param x  Leave blank.
 #'
 #' @return
-#' @export .txt file
+#' @export
 #'
 #' @examples
 #' record_data()
