@@ -7,7 +7,10 @@
 record_data(x)
 }
 \arguments{
-\item{x}{Leave blank.}
+\item{x}{Leave blank}
+}
+\value{
+
 }
 \description{
 Create a .txt file containing the duration of time a study subject spends
@@ -17,5 +20,13 @@ console to enter experimental details required for naming the .txt file and
 for further analysis.
 }
 \examples{
+\dontrun{
 record_data()
+
+5
+4
+3
+5
+t
+}
 }

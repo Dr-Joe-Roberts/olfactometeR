@@ -6,13 +6,21 @@
 #' console to enter experimental details required for naming the .txt file and
 #' for further analysis.
 #'
-#' @param x  Leave blank.
+#' @param x Leave blank
 #'
 #' @return
-#' @export
 #'
 #' @examples
+#' \dontrun{
 #' record_data()
+#'
+#' 5
+#' 4
+#' 3
+#' 5
+#' t
+#' }
+#' @export
 
 record_data = function(x) {
 
@@ -27,7 +35,6 @@ record_data = function(x) {
   treatment_arm = readline("Olfactometer arm containing treatment: ")
 
   start_timer = readline("Press s to begin recording data: ")
-
 
   while (T) {
     #open infinite while loop
