@@ -10,6 +10,6 @@ Authors@R:
 Description: Collecting and analysing data from four-arm olfactometer experiments can be frustrating as 
     the tools currently availble are either too expensive or outdated. The olfactometeR package aims to 
     address these issues.
-License: What license it uses
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
