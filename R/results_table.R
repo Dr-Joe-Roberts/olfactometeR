@@ -79,7 +79,7 @@ results_table = function(x) {
     dplyr::select("Olfactometer Zone", "Treatment Arm")
 
   results_tbl = dplyr::bind_rows(tbl_one, tbl_two) %>%
-    dplyr::distinct
+    dplyr::distinct()
 
   ordered_zones = dplyr::arrange(results_tbl, results_tbl$`Olfactometer Zone`)
 
