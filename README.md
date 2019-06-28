@@ -13,8 +13,8 @@ The olfactometeR package provides various features that optimise
 olfactometer experiments from data acquisition to visualisation and
 analysis. This package was largely written for personal use, but as the
 currently available software programmes for olfactometer experiments are
-either expensive or outdated and without an existing R package it has
-made publically available.
+either expensive or outdated and due to the absence of an existing R
+package it has made publically available.
 
 *DISCLAIMER: olfactometeR is currently under active development and not
 all features are optimised or available at present.*
@@ -28,6 +28,46 @@ You can install the development version of olfactometeR from
 # install.packages("devtools")
 devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 ```
+
+## Usage
+
+There are two primary functions that facilitate data acquisition from
+four-arm olfactometer experiments where there is only *one* treatment
+arm.
+
+Data acquisition can be executed with: `record_data()`. The user will
+then be prompted in the console to enter the following details:
+
+  - User initials
+  - Year
+  - Experiment number
+  - Replicate number
+  - Olfactometer arm containing treatment
+
+Once these details have been supplied the user will be prompted to press
+‘s’ to begin recording data. Data acquisition requires the user to press
+the number key corresponding to the olfactometer zone the test subject
+was in once it leaves that zone - number keys 1 to 5 are valid
+olfactometer zones. To end data acquisition, the user must press ‘t’ to
+terminate the function.
+
+    record_data()
+    
+    User initials: JR
+    Year: 2019
+    Experiment number: 1
+    Replicate number: 1
+    Olfactometer arm containing treatment: 2
+    Press s to begin recording data: s
+    Olfactometer zone: 4
+    13.7 sec elapsed
+    Olfactometer zone: 2
+    6.19 sec elapsed
+    Olfactometer zone: 5
+    6.61 sec elapsed
+    Olfactometer zone: 2
+    45.67 sec elapsed
+    Olfactometer zone: t
 
 ## Example
 
