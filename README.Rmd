@@ -14,22 +14,18 @@ knitr::opts_chunk$set(
 ```
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# olfactometeR - Streamlined data acquisition and analysis from olfactometer experiments
+# olfactometeR - Streamlined data acquisition and analysis for olfactometer experiments
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of olfactometeR is to ...
+The olfactometeR package provides various features that optimise olfactometer experiments from data acquisition to visualisation and analysis. This package was largely written for personal use, but as the currently available software programmes for olfactometer experiments are either expensive or outdated and without an existing R package it has made publically available.   
+
+*DISCLAIMER: olfactometeR is currently under active development and not all features are optimised or available at present.*
 
 ## Installation
 
-You can install the released version of olfactometeR from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("olfactometeR")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version of olfactometeR from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
