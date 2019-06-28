@@ -8,8 +8,8 @@ Authors@R:
            email = "joe.mark.roberts@gmail.com",
            comment = c(ORCID = "0000-0002-9576-9239"))
 Description: Collecting and analysing data from four-arm olfactometer experiments can be frustrating as 
-    the tools currently availble are either too expensive or outdated. The olfactometeR package aims to 
-    address these issues.
+    the tools currently available are either prohibitively expensive or outdated. olfactometeR provides a 
+    set of tools to help make four-arm olfactometry easier, quicker and cheaper.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
