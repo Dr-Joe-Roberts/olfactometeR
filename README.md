@@ -31,12 +31,17 @@ devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 
 ## Usage
 
-There are two primary functions that facilitate data acquisition from
-four-arm olfactometer experiments where there is only *one* treatment
-arm.
+Currently there are two primary functions that facilitate data
+acquisition from four-arm olfactometer experiments where there is only
+**one** treatment arm. Further olfactometer designs and functions are in
+development. The two functions available are:
 
-Data acquisition can be executed with: `record_data()`. The user will
-then be prompted in the console to enter the following details:
+  - `record_data()` for data acquisition
+  - `results_table()` for viewing a summary results table in the console
+    and exporting results as a .xlsx file
+
+Executing the `record_data()` function will prompt the user to input the
+following information:
 
   - User initials
   - Year
@@ -46,10 +51,18 @@ then be prompted in the console to enter the following details:
 
 Once these details have been supplied the user will be prompted to press
 ‘s’ to begin recording data. Data acquisition requires the user to press
-the number key corresponding to the olfactometer zone the test subject
-was in once it leaves that zone - number keys 1 to 5 are valid
-olfactometer zones. To end data acquisition, the user must press ‘t’ to
-terminate the function.
+the number key corresponding to the olfactometer zone that the test
+subject was in once it leaves that zone - number keys 1 to 5 are valid
+for olfactometer zones. To end data acquisition, the user must press ‘t’
+to terminate data acquisition.
+
+<p align="center">
+
+<img width="400px" alt="olfactometer layout" src="man/figures/example.png">
+
+## Examples
+
+Below is a basic data acquisition example:
 
     record_data()
     
