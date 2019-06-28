@@ -21,6 +21,7 @@ executed it will be overwritten.
 }
 \examples{
 \dontrun{
+
 results_table()
 
 

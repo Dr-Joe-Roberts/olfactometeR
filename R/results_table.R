@@ -12,6 +12,7 @@
 #'
 #' @examples
 #' \dontrun{
+#'
 #' results_table()
 #'
 #'
