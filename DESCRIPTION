@@ -22,4 +22,6 @@ Imports:
     dplyr,
     tidyr,
     rio,
-    knitr
+    knitr,
+    tibble,
+    magrittr
