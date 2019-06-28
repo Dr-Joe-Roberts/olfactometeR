@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# olfactometeR
+<img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
+
+# olfactometeR - Streamlined data acquisition and analysis from olfactometer experiments
 
 <!-- badges: start -->
 
