@@ -1,11 +1,31 @@
-#' Title
+#' Preview and export recorded olfactometer data
 #'
-#' @param x
+#' Uses the console to display a summary of the data collected from one
+#' experiment replicate using the record_data function and creates an .xlsx
+#' file title "Summary Results  Table". Please make sure you change the name of
+#' the exported file if you wish to keep it as the next time this function is
+#' executed it will be overwritten.
+#'
+#' @param x Leave blank
 #'
 #' @return
-#' @export
 #'
 #' @examples
+#' \dontrun{
+#' results_table()
+#'
+#'
+#'| Olfactometer Zone | Total Time in Zone (secs) | Total Time in Zone (mins) | No. of Times Zone Entered | Treatment Arm |
+#'|:-----------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------:|
+#'|         1         |           8.68            |           0.14            |             2             |               |
+#'|         2         |          167.89           |           2.80            |             2             |       T       |
+#'|         3         |           12.02           |           0.20            |             1             |               |
+#'|         4         |           1.78            |           0.03            |             1             |               |
+#'|         5         |           3.55            |           0.06            |             1             |               |
+#' }
+#'
+#' @export
+#'
 results_table = function(x) {
   data = read_delim(
     file.choose(),
