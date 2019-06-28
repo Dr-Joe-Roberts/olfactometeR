@@ -1,5 +1,5 @@
 Package: olfactometeR
-Title: Four-Arm Olfactometer Data Collection and Analysis
+Title: Collect and Analyse Data from Four-Arm Olfactometer Experiments
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Joe",
