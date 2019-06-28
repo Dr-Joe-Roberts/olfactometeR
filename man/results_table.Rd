@@ -14,8 +14,8 @@ results_table(x)
 }
 \description{
 Uses the console to display a summary of the data collected from one
-experiment replicate using the record_data function and creates an .xlsx
-file title "Summary Results  Table". Please make sure you change the name of
+experimental replicate using the record_data function and exports an .xlsx
+file titled "Summary Results  Table". Please make sure you change the name of
 the exported file if you wish to keep it as the next time this function is
 executed it will be overwritten.
 }
