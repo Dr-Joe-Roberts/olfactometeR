@@ -1,4 +1,4 @@
-#' \code{record_y_tube)} - Records data from Y-tube olfactometers
+#' \code{record_y_tube} - Records data from Y-tube olfactometers
 #' @name record_y_tube
 #'
 #' @param x Leave blank
