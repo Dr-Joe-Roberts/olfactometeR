@@ -19,6 +19,19 @@ table in the console and exporting an .xlsx file containing the result.
 }
 \examples{
 \dontrun{> library(olfactometeR)
+record_y_tube()
+User initials: JR
+Year: 2019
+Experiment number: 1
+Replicate number: 1
+Olfactometer arm containing treatment: 2
+Press any key to begin recording data:
+Olfactometer zone: 1
+99.97 sec elapsed
+|Olfactometer Arm|Time to Reach Arm End (secs)|Time to Reach Arm End (mins)|Treatment Arm|
+|:--------------:|:--------------------------:|:--------------------------:|:-----------:|
+|        1       |            99.97           |             1.67           |             |
+|        2       |              NA            |              NA            |      T      |
 }
 
 }
