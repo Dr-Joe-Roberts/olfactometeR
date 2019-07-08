@@ -2,4 +2,5 @@
 
 export("%>%")
 export(record_four_arm)
+export(record_y_tube)
 importFrom(magrittr,"%>%")

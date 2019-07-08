@@ -12,7 +12,7 @@
 #' \dontrun{> library(olfactometeR)
 #' }
 #'
-#' #' @export
+#' @export
 #'
 record_y_tube <- function(x) {
   user <- readline("User initials: ")

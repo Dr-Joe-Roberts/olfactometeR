@@ -2,7 +2,7 @@
 % Please edit documentation in R/record_y_tube.R
 \name{record_y_tube}
 \alias{record_y_tube}
-\title{\code{record_y_tube)} - Records data from Y-tube olfactometers}
+\title{\code{record_y_tube} - Records data from Y-tube olfactometers}
 \usage{
 record_y_tube(x)
 }
@@ -15,12 +15,10 @@ choice of an individual in a Y-tubeolfactometer, returing a summary
 table in the console and exporting an .xlsx file containing the result.
 }
 \description{
-\code{record_y_tube)} - Records data from Y-tube olfactometers
+\code{record_y_tube} - Records data from Y-tube olfactometers
 }
 \examples{
 \dontrun{> library(olfactometeR)
 }
-
-#' @export
 
 }
