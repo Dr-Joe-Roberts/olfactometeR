@@ -65,7 +65,7 @@ record_four_arm <- function(x) {
           year,
           experiment,
           replicate,
-          "Olfactometer_Recording.txt",
+          "Four_Arm_Olfactometer_Recording.txt",
           sep = "_"
         ),
         col.names = F,
