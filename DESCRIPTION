@@ -24,4 +24,5 @@ Imports:
     rio,
     knitr,
     tibble,
-    magrittr
+    magrittr,
+    rlang
