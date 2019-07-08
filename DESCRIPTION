@@ -1,5 +1,5 @@
 Package: olfactometeR
-Title: Collect and Analyse Data from Four-Arm Olfactometer Experiments
+Title: Collect and Analyse Data from Olfactometer Experiments
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Joe",
@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-9576-9239"))
 Description: Collecting and analysing data from four-arm olfactometer experiments can be frustrating as 
     the tools currently available are either prohibitively expensive or outdated. olfactometeR provides a 
-    set of tools to help make four-arm olfactometry easier, quicker and cheaper. See the GitHub repo for 
+    set of tools to help make recording olfactometry experiments easier, quicker and cheaper. See the GitHub repo for 
     more detailed information and examples.
 License: GPL-3
 Encoding: UTF-8
