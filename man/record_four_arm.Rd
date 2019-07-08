@@ -18,24 +18,38 @@ table in the console and exporting an .xlsx file containing the results.
 \code{record_four_arm} - Records data from four-arm olfactometers
 }
 \examples{
-\dontrun{record_four_arm()
-
+\dontrun{> library(olfactometeR)
+> record_four_arm()
 User initials: JR
 Year: 2019
 Experiment number: 1
 Replicate number: 1
 Olfactometer arm containing treatment: 2
-Press any key to begin recording data: s
+Press any key to begin recording data:
 Olfactometer zone: 5
+98.08 sec elapsed
 Olfactometer zone: 4
-13.7 sec elapsed
+25.61 sec elapsed
 Olfactometer zone: 2
-6.19 sec elapsed
+106.95 sec elapsed
+Olfactometer zone: 4
+3.57 sec elapsed
+Olfactometer zone: 2
+11.85 sec elapsed
 Olfactometer zone: 5
-6.61 sec elapsed
+11.37 sec elapsed
+Olfactometer zone: 3
+55.02 sec elapsed
 Olfactometer zone: 2
-45.67 sec elapsed
+11.72 sec elapsed
 Olfactometer zone: t
+|Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
+|:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
+|         1       |        0.00       |       0.00        |          0           |             |
+|         2       |      130.52       |       2.18        |          3           |      T      |
+|         3       |       55.02       |       0.92        |          1           |             |
+|         4       |       29.18       |       0.49        |          2           |             |
+|         5       |      109.45       |       1.82        |          2           |             |
 }
 
 }
