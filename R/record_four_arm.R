@@ -37,7 +37,8 @@
 #' Olfactometer zone: 2
 #' 11.72 sec elapsed
 #' Olfactometer zone: t
-
+#'
+#'
 #' |Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
 #' |:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
 #' |         1       |        0.00       |       0.00        |          0           |             |
