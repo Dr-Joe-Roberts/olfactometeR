@@ -2,20 +2,27 @@
 % Please edit documentation in R/record_y_tube.R
 \name{record_y_tube}
 \alias{record_y_tube}
-\title{Records data from Y-tube olfactometers}
+\title{Record choice data from Y-tube olfactometer experiments}
 \usage{
-record_y_tube(x)
-}
-\arguments{
-\item{x}{Leave blank}
+record_y_tube()
 }
 \value{
-code{record_y_tube} allows the user to interactively record the
-choice of an individual in a Y-tubeolfactometer, returing a summary
-table in the console and exporting an .xlsx file containing the result.
+code{record_y_tube} returns a summary table in the console and exports
+an .xlsx file containing these values to the user's working directory.
 }
 \description{
-Records data from Y-tube olfactometers
+\code{record_y_tube} allows the user to record the choices made by
+study subjects in Y-tube olfactometer experiments.
+
+Upon executing \code{record_y_tube} the user will be prompted in the console to enter the
+following information before recording: User initials', 'Year of experiment',
+'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
+
+Each Y-tube olfactometer arm corresponds to a numerical key, either one or two.
+When a study subject enters an olfactometer arm and crosses the pre-determined
+decision line the user must use the numerical key corresponding to the olfactometer arm to
+record the individual as making a choice. Recording will automatically terminate once
+a choice has been made.
 }
 \examples{
 \dontrun{> library(olfactometeR)

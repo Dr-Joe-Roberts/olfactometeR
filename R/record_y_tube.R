@@ -1,12 +1,23 @@
-#' Records data from Y-tube olfactometers
+#' Record choice data from Y-tube olfactometer experiments
 #' @name record_y_tube
 #'
-#' @param x Leave blank
+#' @description \code{record_y_tube} allows the user to record the choices made by
+#' study subjects in Y-tube olfactometer experiments.
 #'
-#' @return code{record_y_tube} allows the user to interactively record the
-#' choice of an individual in a Y-tubeolfactometer, returing a summary
-#' table in the console and exporting an .xlsx file containing the result.
+#' Upon executing \code{record_y_tube} the user will be prompted in the console to enter the
+#' following information before recording: User initials', 'Year of experiment',
+#' 'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
 #'
+#' Each Y-tube olfactometer arm corresponds to a numerical key, either one or two.
+#' When a study subject enters an olfactometer arm and crosses the pre-determined
+#' decision line the user must use the numerical key corresponding to the olfactometer arm to
+#' record the individual as making a choice. Recording will automatically terminate once
+#' a choice has been made.
+#'
+#' @usage record_y_tube()
+#'
+#' @return code{record_y_tube} returns a summary table in the console and exports
+#' an .xlsx file containing these values to the user's working directory.
 #'
 #' @examples
 #' \dontrun{> library(olfactometeR)
@@ -29,7 +40,7 @@
 #'
 #' @export
 #'
-record_y_tube <- function(x) {
+record_y_tube <- function() {
   user <- readline("User initials: ")
 
   year <- readline("Year: ")

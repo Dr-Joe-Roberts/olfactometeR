@@ -2,18 +2,28 @@
 % Please edit documentation in R/record_four_arm.R
 \name{record_four_arm}
 \alias{record_four_arm}
-\title{Record data from four-arm olfactometers}
+\title{Record movement data from four-arm olfactometer experiments}
 \usage{
 record_four_arm()
 }
 \value{
-\code{record_four_arm} returns a summary table of an individual's movements
+\code{record_four_arm} returns a summary table of a study subject's movements
 recorded in a four-arm olfactometer to the console and exports a .xlsx file containing
 these values to the user's working directory.
 }
 \description{
-\code{record_four_arm} allows the user to interactively record an
-individual's movements in a four-arm olfactometer
+\code{record_four_arm} allows the user to interactively record the movements
+of their study subject in a four-arm olfactometer.
+
+Upon executing \code{record_four_arm} the user will be prompted in the console to enter the
+following information before recording: User initials', 'Year of experiment',
+'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
+
+Four-arm olfactometers are typically divided into five unique zones (one for each arm
+as well as a central zone), with each zone corresponding to a numerical
+key from one to five. When a study subject leaves a zone, the user must use the
+numerical key corresponding to the departed zone to record the correct zone. When the
+observation period is over, the user can terminate the recording process by pressing 't'.
 }
 \examples{
 \dontrun{> library(olfactometeR)
