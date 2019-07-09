@@ -14,9 +14,11 @@ knitr::opts_chunk$set(
 ```
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# olfactometeR - Streamlined data acquisition and analysis for olfactometer experiments
+# olfactometeR - Streamlined data acquisition for olfactometer experiments
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
 The olfactometeR package provides various features that optimise olfactometer experiments from data acquisition to visualisation and analysis. This package was largely written for personal use, but as the currently available software programmes for olfactometer experiments are either expensive or outdated and due to the absence of an existing R package it has made publically available.   

@@ -18,8 +18,8 @@ Upon executing \code{record_y_tube} the user will be prompted in the console to 
 following information before recording: User initials', 'Year of experiment',
 'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
 
-Each Y-tube olfactometer arm corresponds to a numerical key, either one or two.
-When a study subject enters an olfactometer arm and crosses the pre-determined
+Each Y-tube olfactometer arm corresponds to a numerical key, either one or two. When
+a study subject enters an olfactometer arm and crosses the pre-determined
 decision line the user must use the numerical key corresponding to the olfactometer arm to
 record the individual as making a choice. Recording will automatically terminate once
 a choice has been made.

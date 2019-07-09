@@ -3,10 +3,14 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# olfactometeR - Streamlined data acquisition and analysis for olfactometer experiments
+# olfactometeR - Streamlined data acquisition for olfactometer experiments
 
 <!-- badges: start -->
 
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build
+status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
 The olfactometeR package provides various features that optimise
