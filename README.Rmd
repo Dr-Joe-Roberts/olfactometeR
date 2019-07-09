@@ -14,16 +14,16 @@ knitr::opts_chunk$set(
 ```
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# `olfactometeR` - Streamlined data collection for behavioural experiments with olfactometers
+# `olfactometeR` - Streamlined data collection for behavioural experiments using olfactometery
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
-`olfactometeR` provides interactive, easy to use functions to facilitate data collection for experiments that use olfactometers to test behavioural responses of test subjects to volatile chemical stimuli. This package was largely written for undergraduate students and entomology researchers in the [Bruce Lab](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship) at Keele University to replace the outdated software packages that do not run on modern operating systems.
+`olfactometeR` provides interactive, easy to use functions that facilitate data collection for experiments using olfactometers to test behavioural responses of test subjects to volatile chemical stimuli. This package is largely written for undergraduate students and entomology researchers in the [Bruce Lab at Keele University](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship) to replace the outdated software packages that do not run on modern operating systems, but may be useful for other researchers.
 
-**DISCLAIMER:** `olfactometeR` is under active development and not all features are optimised or available at present!
+**DISCLAIMER:** `olfactometeR` is under active development and not all features are optimised or available at present. 
 
 ## Installation
 
@@ -36,15 +36,15 @@ devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 
 ## Using `olfactometeR`
 
-> Until a more stable release of `olfactometeR` please fork this repo and use your version to ensure some semblance of stability. Changes made here are likely to be sporadic but drastic. Otherwise, use this repo at your own discression! 
+> Until a more stable release of `olfactometeR` is released please fork this repo and use your version to ensure some semblance of stability. Changes made here are likely to be sporadic but drastic. Otherwise, use this repo at your own discression! 
 
-Currently there are two functions available for data collection, which allow the user to interact with the console to record the behavioural response of the study subject. 
+Currently there are two functions available for data collection, which allow the user to interact with the console to record the behavioural response of their study subject. 
 
 #### 1. `record_four_arm()` for experiments using four-arm olfactometers
 
-Four-arm olfactometers are conventionally split into five zones, one for each arm as well as a central zone, with each zone corresponding to a numerical key from `1:5`. When a study subject leaves a zone, the user must use the numerical key corresponding to the departed zone to record the correct zone. When the observation period is over, the user can end the recording process by pressing `t`. Once recording has ended a summary results tabled will be displayed in the console. At present the `record_four_arm()` function is able to accomodate up to two treatment arms.
+Four-arm olfactometers are conventionally split into five zones, one for each arm as well as a central zone, with each zone corresponding to a numerical key `1:5`. When a study subject leaves a zone, the user must use the numerical key corresponding to the departed zone to ensure the correct zone is recorded. When the observation period has finished, the user can end the recording process by pressing `t`, which will display a summary results table in the console. At present the `record_four_arm()` function is able to accomodate up to two treatment arms.
 
-Below is a data collection example for a four-arm olfactometer with one treatment arm:
+Four-arm olfactometer with one treatment arm example:
 
 ```
 # One treatment arm
@@ -90,9 +90,9 @@ Olfactometer zone: t
 
 #### 2. `record_y_tube()` for experiments using Y-tube olfactometers
 
-Each Y-tube olfactometer arm corresponds to a numerical key, either `1` or `2`. When a study subject enters an olfactometer arm and crosses the pre-determined line to indicate a decision has been made the user must use the numerical key corresponding to the entered olfactometer arm to record the individual as have made a choice. Recording will automatically end once a choice has been made and entered into the console. Once recording has ended a summary results tabled will be displayed in the console.
+Each of the two Y-tube olfactometer arm corresponds to a numerical key, `1` or `2`. When a study subject enters one of the olfactometer arms and crosses the pre-determined line to indicate a decision has been made the user must use the corresponding numerical key to record the individual as having made a choice. Recording will automatically end once a choice has been made and entered into the console, which will display a summary results table in the console.
 
-Below is a data collection example for a Y-tube olfactometer:
+Y-tube olfactometer example:
 
 ```
 library(olfactometeR)
@@ -115,3 +115,6 @@ Olfactometer zone: 1
 |        2       |              NA            |              NA            |      T      |
 ```
 
+## The future ::crystal_ball::
+
+There are a number of features I intend to develop for `olfactometeR` to help streamline data analysis and visualisation for behavioural experiments using olfactometery. If you have any suggestions or if you discover any issues please report them! 
