@@ -2,20 +2,18 @@
 % Please edit documentation in R/record_four_arm.R
 \name{record_four_arm}
 \alias{record_four_arm}
-\title{Records data from four-arm olfactometers}
+\title{Record data from four-arm olfactometers}
 \usage{
-record_four_arm(x)
-}
-\arguments{
-\item{x}{Leave blank}
+record_four_arm()
 }
 \value{
-\code{record_four_arm} allows the user to interactively record an
-individual's movements in a four-arm olfactometer, returing a summary
-table in the console and exporting an .xlsx file containing the results.
+\code{record_four_arm} returns a summary table of an individual's movements
+recorded in a four-arm olfactometer to the console and exports a .xlsx file containing
+these values to the user's working directory.
 }
 \description{
-Records data from four-arm olfactometers
+\code{record_four_arm} allows the user to interactively record an
+individual's movements in a four-arm olfactometer
 }
 \examples{
 \dontrun{> library(olfactometeR)

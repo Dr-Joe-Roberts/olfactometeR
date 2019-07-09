@@ -1,12 +1,15 @@
-#' Records data from four-arm olfactometers
+#' Record data from four-arm olfactometers
 #' @name record_four_arm
 #'
-#' @param x Leave blank
+#' @description \code{record_four_arm} allows the user to interactively record an
+#' individual's movements in a four-arm olfactometer
 #'
-#' @return \code{record_four_arm} allows the user to interactively record an
-#' individual's movements in a four-arm olfactometer, returing a summary
-#' table in the console and exporting an .xlsx file containing the results.
+#' @usage record_four_arm()
 #'
+#'
+#' @return \code{record_four_arm} returns a summary table of an individual's movements
+#' recorded in a four-arm olfactometer to the console and exports a .xlsx file containing
+#' these values to the user's working directory.
 #'
 #' @examples
 #' \dontrun{> library(olfactometeR)
@@ -46,7 +49,7 @@
 #'
 #' @export
 #'
-record_four_arm <- function(x) {
+record_four_arm <- function() {
   user <- readline("User initials: ")
 
   year <- readline("Year: ")
