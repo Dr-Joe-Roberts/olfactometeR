@@ -3,7 +3,7 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# `olfactometeR` - Streamlined data collection for olfactometer behavioural experiments
+# `olfactometeR` - Streamlined data collection for behavioural experiments with olfactometers
 
 <!-- badges: start -->
 
