@@ -3,7 +3,7 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# `olfactometeR` - Streamlined data collection for olfactometer experiments
+# `olfactometeR` - Streamlined data collection for olfactometer behavioural experiments
 
 <!-- badges: start -->
 
@@ -13,15 +13,16 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
-The `olfactometeR` package provides interactive, easy to use functions
-that facilitate data collection from olfactometer experiments. This
-package was largely written for entomology students and researchers in
-the [Bruce
+`olfactometeR` provides interactive, easy to use functions to facilitate
+data collection for experiments that use olfactometers to test
+behavioural responses of test subjects to volatile chemical stimuli.
+This package was largely written for undergraduate students and
+entomology researchers in the [Bruce
 Lab](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship)
-at Keele University to replace the outdated software packages available
-for MS-DOS.
+at Keele University to replace the outdated software packages that do
+not run on modern operating systems.
 
-**DISCLAIMER**: `olfactometeR` is under active development and not all
+**DISCLAIMER:** `olfactometeR` is under active development and not all
 features are optimised or available at present.
 
 ## Installation
@@ -34,51 +35,98 @@ You can install the development version of olfactometeR from
 devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 ```
 
-## Usage
+## Using `olfactometeR`
 
-Currently there are two primary functions that facilitate data
-acquisition from four-arm olfactometer experiments where there is only
-**one** treatment arm. Further olfactometer designs and functions are in
-development. The two functions available are:
+> Until a more stable release of `olfactometeR` please fork this repo
+> and use your version to ensure some semblance of stability. Changes
+> made here are likely to be sporadic but drastic. Otherwise, use this
+> repo at your own discression\!
 
-  - `record_data()` for data acquisition
-  - `results_table()` for viewing a summary results table in the console
-    and exporting results as a .xlsx file
+Currently there are two functions available for data collection, which
+allow the user to interact with the console to record the behavioural
+response of the study subject.
 
-Executing the `record_data()` function will prompt the user to input the
-following information:
+#### 1\. `record_four_arm()` for experiments using four-arm olfactometers
 
-  - User initials
-  - Year
-  - Experiment number
-  - Replicate number
-  - Olfactometer arm containing treatment
+Four-arm olfactometers are conventionally split into five zones, one for
+each arm as well as a central zone, with each zone corresponding to a
+numerical key from `1:5`. When a study subject leaves a zone, the user
+must use the numerical key corresponding to the departed zone to record
+the correct zone. When the observation period is over, the user can end
+the recording process by pressing `t`. At present the
+`record_four_arm()` function is able to accomodate up to two treatment
+arms.
 
-Once these details have been supplied the user will be prompted to press
-‘s’ to begin recording data. Data acquisition requires the user to press
-the number key corresponding to the olfactometer zone that the test
-subject was in once it leaves that zone - number keys 1 to 5 are valid
-for olfactometer zones. To end data acquisition, the user must press ‘t’
-to terminate data acquisition.
+Below is a data collection example for a four-arm olfactometer with one
+treatment arm:
 
-## Examples
+    # One treatment arm
+    
+    library(olfactometeR)
+    
+    record_four_arm()
+    
+    User initials: JR
+    Year: 2019
+    Experiment number: 1
+    Replicate number: 1
+    Number of treatment arms (1/2): 1
+    Olfactometer arm containing treatment (1/2/3/4): 2
+    Press any key to begin collecting data:
+    Olfactometer zone: 5
+    98.08 sec elapsed
+    Olfactometer zone: 4
+    25.61 sec elapsed
+    Olfactometer zone: 2
+    106.95 sec elapsed
+    Olfactometer zone: 4
+    3.57 sec elapsed
+    Olfactometer zone: 2
+    11.85 sec elapsed
+    Olfactometer zone: 5
+    11.37 sec elapsed
+    Olfactometer zone: 3
+    55.02 sec elapsed
+    Olfactometer zone: 2
+    11.72 sec elapsed
+    Olfactometer zone: t
+    
+    
+    |Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
+    |:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
+    |        1        |        0.00       |       0.00        |          0           |             |
+    |        2        |      130.52       |       2.18        |          3           |      T      |
+    |        3        |       55.02       |       0.92        |          1           |             |
+    |        4        |       29.18       |       0.49        |          2           |             |
+    |        5        |      109.45       |       1.82        |          2           |             |
 
-Below is a basic data acquisition example:
+#### 2\. `record_y_tube()` for experiments using Y-tube olfactometers
 
-    record_data()
+Each Y-tube olfactometer arm corresponds to a numerical key, either `1`
+or `2`. When a study subject enters an olfactometer arm and crosses the
+pre-determined line to indicate a decision has been made the user must
+use the numerical key corresponding to the entered olfactometer arm to
+record the individual as have made a choice. Recording will
+automatically end once a choice has been made and entered into the
+console.
+
+Below is a data collection example for a Y-tube olfactometer:
+
+    library(olfactometeR)
+    
+    record_y_tube()
     
     User initials: JR
     Year: 2019
     Experiment number: 1
     Replicate number: 1
     Olfactometer arm containing treatment: 2
-    Press s to begin recording data: s
-    Olfactometer zone: 4
-    13.7 sec elapsed
-    Olfactometer zone: 2
-    6.19 sec elapsed
-    Olfactometer zone: 5
-    6.61 sec elapsed
-    Olfactometer zone: 2
-    45.67 sec elapsed
-    Olfactometer zone: t
+    Press any key to begin recording data:
+    Olfactometer zone: 1
+    99.97 sec elapsed
+    
+    
+    |Olfactometer Arm|Time to Reach Arm End (secs)|Time to Reach Arm End (mins)|Treatment Arm|
+    |:--------------:|:--------------------------:|:--------------------------:|:-----------:|
+    |        1       |            99.97           |             1.67           |             |
+    |        2       |              NA            |              NA            |      T      |
