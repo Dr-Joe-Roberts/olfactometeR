@@ -14,16 +14,16 @@ knitr::opts_chunk$set(
 ```
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# olfactometeR - Streamlined data acquisition for olfactometer experiments
+# `olfactometeR` - Streamlined data collection for olfactometer experiments
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
-The olfactometeR package provides various features that optimise olfactometer experiments from data acquisition to visualisation and analysis. This package was largely written for personal use, but as the currently available software programmes for olfactometer experiments are either expensive or outdated and due to the absence of an existing R package it has made publically available.   
+The `olfactometeR` package provides interactive, easy to use functions that facilitate data collection from olfactometer experiments. This package was largely written for entomology students and researchers in the [Bruce Lab](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship) at Keele University to replace the outdated software packages available for MS-DOS.   
 
-*DISCLAIMER: olfactometeR is currently under active development and not all features are optimised or available at present.*
+**DISCLAIMER**: `olfactometeR` is under active development and not all features are optimised or available at present.
 
 ## Installation
 
@@ -51,10 +51,6 @@ Executing the `record_data()` function will prompt the user to input the followi
 
 Once these details have been supplied the user will be prompted to press 's' to begin recording data. Data acquisition requires the user to press the number key corresponding to the olfactometer zone that the test subject was in once it leaves that zone - number keys 1 to 5 are valid for olfactometer zones. To end data acquisition, the user must press 't' to terminate data acquisition. 
 
-<p align="center">
-
-<img width="400px" alt="olfactometer layout" src="man/figures/example.png">
-
 ## Examples
 
 Below is a basic data acquisition example:
@@ -78,28 +74,3 @@ Olfactometer zone: 2
 45.67 sec elapsed
 Olfactometer zone: t
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(olfactometeR)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

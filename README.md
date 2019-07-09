@@ -3,7 +3,7 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# olfactometeR - Streamlined data acquisition for olfactometer experiments
+# `olfactometeR` - Streamlined data collection for olfactometer experiments
 
 <!-- badges: start -->
 
@@ -13,15 +13,16 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
-The olfactometeR package provides various features that optimise
-olfactometer experiments from data acquisition to visualisation and
-analysis. This package was largely written for personal use, but as the
-currently available software programmes for olfactometer experiments are
-either expensive or outdated and due to the absence of an existing R
-package it has made publically available.
+The `olfactometeR` package provides interactive, easy to use functions
+that facilitate data collection from olfactometer experiments. This
+package was largely written for entomology students and researchers in
+the [Bruce
+Lab](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship)
+at Keele University to replace the outdated software packages available
+for MS-DOS.
 
-*DISCLAIMER: olfactometeR is currently under active development and not
-all features are optimised or available at present.*
+**DISCLAIMER**: `olfactometeR` is under active development and not all
+features are optimised or available at present.
 
 ## Installation
 
@@ -60,10 +61,6 @@ subject was in once it leaves that zone - number keys 1 to 5 are valid
 for olfactometer zones. To end data acquisition, the user must press ‘t’
 to terminate data acquisition.
 
-<p align="center">
-
-<img width="400px" alt="olfactometer layout" src="man/figures/example.png">
-
 ## Examples
 
 Below is a basic data acquisition example:
@@ -85,36 +82,3 @@ Below is a basic data acquisition example:
     Olfactometer zone: 2
     45.67 sec elapsed
     Olfactometer zone: t
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(olfactometeR)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
