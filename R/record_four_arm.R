@@ -6,7 +6,8 @@
 #'
 #' Upon executing \code{record_four_arm} the user will be prompted in the console to enter the
 #' following information before recording: User initials', 'Year of experiment',
-#' 'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
+#' 'Experiment number', 'Replicate number', 'Number of treatment arms' and
+#' 'Olfactometer arm containing treatment'.
 #'
 #' Four-arm olfactometers are typically divided into five unique zones (one for each arm
 #' as well as a central zone), with each zone corresponding to a numerical
@@ -21,14 +22,20 @@
 #' these values to the user's working directory.
 #'
 #' @examples
-#' \dontrun{> library(olfactometeR)
-#' > record_four_arm()
+#' \dontrun{
+#'
+#' # One treatment arm
+#'
+#' Library(olfactometeR)
+#'
+#' record_four_arm()
 #' User initials: JR
 #' Year: 2019
 #' Experiment number: 1
 #' Replicate number: 1
-#' Olfactometer arm containing treatment: 2
-#' Press any key to begin recording data:
+#' Number of treatment arms (1/2): 1
+#' Olfactometer arm containing treatment (1/2/3/4): 2
+#' Press any key to begin collecting data:
 #' Olfactometer zone: 5
 #' 98.08 sec elapsed
 #' Olfactometer zone: 4
@@ -50,11 +57,49 @@
 #'
 #' |Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
 #' |:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
-#' |         1       |        0.00       |       0.00        |          0           |             |
-#' |         2       |      130.52       |       2.18        |          3           |      T      |
-#' |         3       |       55.02       |       0.92        |          1           |             |
-#' |         4       |       29.18       |       0.49        |          2           |             |
-#' |         5       |      109.45       |       1.82        |          2           |             |
+#' |        1        |        0.00       |       0.00        |          0           |             |
+#' |        2        |      130.52       |       2.18        |          3           |      T      |
+#' |        3        |       55.02       |       0.92        |          1           |             |
+#' |        4        |       29.18       |       0.49        |          2           |             |
+#' |        5        |      109.45       |       1.82        |          2           |             |
+#'
+#'
+#' # Two treatment arms
+#'
+#' library(olfactometeR)
+#'
+#' record_four_arm()
+#' User initials: JR
+#' Year: 2019
+#' Experiment number: 1
+#' Replicate number: 1
+#' Number of treatment arms (1/2): 2
+#' Olfactometer arm containing treatment one (1/2/3/4): 1
+#' Olfactometer arm containing treatment two (1/2/3/4): 4
+#' Press any key to begin collecting data:
+#' Olfactometer zone: 5
+#' 33.94 sec elapsed
+#' Olfactometer zone: 4
+#' 23.4 sec elapsed
+#' Olfactometer zone: 5
+#' 5.91 sec elapsed
+#' Olfactometer zone: 1
+#' 42.33 sec elapsed
+#' Olfactometer zone: 5
+#' 28.64 sec elapsed
+#' Olfactometer zone: 3
+#' 8.36 sec elapsed
+#' Olfactometer zone: t
+#'
+#'
+#' |Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arms|
+#' |:---------------:|:-----------------:|:-----------------:|:--------------------:|:------------:|
+#' |        1        |       42.33       |        0.71       |           1          |       T      |
+#' |        2        |        0.00       |        0.00       |           0          |              |
+#' |        3        |        8.36       |        0.14       |           1          |              |
+#' |        4        |       23.40       |        0.39       |           1          |       T      |
+#' |        5        |       68.49       |        1.14       |           3          |              |
+#'
 #' }
 #'
 #' @export
@@ -73,14 +118,14 @@ record_four_arm <- function() {
   if (no_treatment_arms == 1){
     treatment_arm <- readline("Olfactometer arm containing treatment (1/2/3/4): ")
 
-  start_timer <- readline("Press any key to begin recording data: ")
+  start_timer <- readline("Press any key to begin collecting data: ")
 
 
   while (TRUE) {
-    tictoc::tic() # start timer
-    olfactometer_zone <- readline("Olfactometer zone: ") # allow for entry of state
-    if (olfactometer_zone %in% 1:5) { # check if it's acceptable
-      elapsed <- tictoc::toc() # if it is then end timer and record data
+    tictoc::tic()
+    olfactometer_zone <- readline("Olfactometer zone: ")
+    if (olfactometer_zone %in% 1:5) {
+      elapsed <- tictoc::toc()
       utils::write.table(
         cbind(
           experiment,
@@ -97,16 +142,16 @@ record_four_arm <- function() {
           "Four_Arm_Olfactometer_Recording.txt",
           sep = "_"
         ),
-        col.names = F,
-        row.names = F,
-        quote = F,
-        append = T
+        col.names = FALSE,
+        row.names = FALSE,
+        quote = FALSE,
+        append = TRUE
       )
-    } else if (olfactometer_zone == "t") { # if input is 't'
-      break # break out of while loop
+    } else if (olfactometer_zone == "t") {
+      break
     } else if (olfactometer_zone < 1 |
       olfactometer_zone > 5 &
-        olfactometer_zone != "t") { # if input is not and accepted state AND is not 't'
+        olfactometer_zone != "t") {
       print("That is not a valid zone, please use numerical keys 1:5 to select valid zones")
     }
   }
@@ -151,7 +196,7 @@ record_four_arm <- function() {
     dplyr::mutate(time_mins = time_secs / 60)
 
   treatment_zone <- zones %>%
-    dplyr::filter(control == F) %>%
+    dplyr::filter(control == FALSE) %>%
     dplyr::mutate("Olfactometer Zone" = D) %>%
     dplyr::mutate(Treatment = sum(E)) %>%
     dplyr::mutate("Treatment Arm" = "T")
@@ -160,7 +205,7 @@ record_four_arm <- function() {
     dplyr::select("Olfactometer Zone", "Treatment Arm")
 
   control_zones <- zones %>%
-    dplyr::filter(control == T) %>%
+    dplyr::filter(control == TRUE) %>%
     dplyr::mutate("Olfactometer Zone" = D) %>%
     dplyr::mutate(Treatment = sum(E)) %>%
     dplyr::mutate("Treatment Arm" = " ")
@@ -209,14 +254,13 @@ record_four_arm <- function() {
 
     treatment_arm_two <- readline("Olfactometer arm containing treatment two (1/2/3/4): ")
 
-    start_timer <- readline("Press any key to begin recording data: ")
+    start_timer <- readline("Press any key to begin collecting data: ")
 
     while (TRUE) {
-      # open infinite while loop
-      tictoc::tic() # start timer
-      olfactometer_zone <- readline("Olfactometer zone: ") # allow for entry of state
-      if (olfactometer_zone %in% 1:5) { # check if it's acceptable
-        elapsed <- tictoc::toc() # if it is then end timer and record data
+      tictoc::tic()
+      olfactometer_zone <- readline("Olfactometer zone: ")
+      if (olfactometer_zone %in% 1:5) {
+        elapsed <- tictoc::toc()
         utils::write.table(
           cbind(
             experiment,
@@ -239,11 +283,11 @@ record_four_arm <- function() {
           quote = FALSE,
           append = TRUE
         )
-      } else if (olfactometer_zone == "t") { # if input is 't'
+      } else if (olfactometer_zone == "t") {
         break # break out of while loop
       } else if (olfactometer_zone < 1 |
         olfactometer_zone > 5 &
-          olfactometer_zone != "t") { # if input is not and accepted state AND is not 't'
+          olfactometer_zone != "t") {
         print("That is not a valid zone, please use numerical keys 1:5 to select valid zones")
       }
     }

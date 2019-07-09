@@ -17,7 +17,8 @@ of their study subject in a four-arm olfactometer.
 
 Upon executing \code{record_four_arm} the user will be prompted in the console to enter the
 following information before recording: User initials', 'Year of experiment',
-'Experiment number', 'Replicate number' and 'Olfactometer arm containing treatment'.
+'Experiment number', 'Replicate number', 'Number of treatment arms' and
+'Olfactometer arm containing treatment'.
 
 Four-arm olfactometers are typically divided into five unique zones (one for each arm
 as well as a central zone), with each zone corresponding to a numerical
@@ -26,14 +27,20 @@ numerical key corresponding to the departed zone to record the correct zone. Whe
 observation period is over, the user can terminate the recording process by pressing 't'.
 }
 \examples{
-\dontrun{> library(olfactometeR)
-> record_four_arm()
+\dontrun{
+
+# One treatment arm
+
+Library(olfactometeR)
+
+record_four_arm()
 User initials: JR
 Year: 2019
 Experiment number: 1
 Replicate number: 1
-Olfactometer arm containing treatment: 2
-Press any key to begin recording data:
+Number of treatment arms (1/2): 1
+Olfactometer arm containing treatment (1/2/3/4): 2
+Press any key to begin collecting data:
 Olfactometer zone: 5
 98.08 sec elapsed
 Olfactometer zone: 4
@@ -55,11 +62,49 @@ Olfactometer zone: t
 
 |Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
 |:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
-|         1       |        0.00       |       0.00        |          0           |             |
-|         2       |      130.52       |       2.18        |          3           |      T      |
-|         3       |       55.02       |       0.92        |          1           |             |
-|         4       |       29.18       |       0.49        |          2           |             |
-|         5       |      109.45       |       1.82        |          2           |             |
+|        1        |        0.00       |       0.00        |          0           |             |
+|        2        |      130.52       |       2.18        |          3           |      T      |
+|        3        |       55.02       |       0.92        |          1           |             |
+|        4        |       29.18       |       0.49        |          2           |             |
+|        5        |      109.45       |       1.82        |          2           |             |
+
+
+# Two treatment arms
+
+library(olfactometeR)
+
+record_four_arm()
+User initials: JR
+Year: 2019
+Experiment number: 1
+Replicate number: 1
+Number of treatment arms (1/2): 2
+Olfactometer arm containing treatment one (1/2/3/4): 1
+Olfactometer arm containing treatment two (1/2/3/4): 4
+Press any key to begin collecting data:
+Olfactometer zone: 5
+33.94 sec elapsed
+Olfactometer zone: 4
+23.4 sec elapsed
+Olfactometer zone: 5
+5.91 sec elapsed
+Olfactometer zone: 1
+42.33 sec elapsed
+Olfactometer zone: 5
+28.64 sec elapsed
+Olfactometer zone: 3
+8.36 sec elapsed
+Olfactometer zone: t
+
+
+|Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arms|
+|:---------------:|:-----------------:|:-----------------:|:--------------------:|:------------:|
+|        1        |       42.33       |        0.71       |           1          |       T      |
+|        2        |        0.00       |        0.00       |           0          |              |
+|        3        |        8.36       |        0.14       |           1          |              |
+|        4        |       23.40       |        0.39       |           1          |       T      |
+|        5        |       68.49       |        1.14       |           3          |              |
+
 }
 
 }
