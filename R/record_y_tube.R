@@ -1,4 +1,4 @@
-#' \code{record_y_tube} - Records data from Y-tube olfactometers
+#' Records data from Y-tube olfactometers
 #' @name record_y_tube
 #'
 #' @param x Leave blank
@@ -74,7 +74,7 @@ record_y_tube <- function(x) {
       )
       break
     } else if (olfactometer_zone < 1 |
-               olfactometer_zone > 2) {
+      olfactometer_zone > 2) {
       # if input is not and accepted state AND is not 't'
       print("That is not a valid zone, please use numerical keys 1:2 to select valid zones")
     }
@@ -102,9 +102,9 @@ record_y_tube <- function(x) {
   arms <- data %>%
     dplyr::mutate(control = D != C)
 
-  by_arms = dplyr::group_by(arms, D)
+  by_arms <- dplyr::group_by(arms, D)
 
-  sum_zone_times = dplyr::summarise(by_arms, time_secs = sum(E)) %>%
+  sum_zone_times <- dplyr::summarise(by_arms, time_secs = sum(E)) %>%
     dplyr::mutate(time_mins = time_secs / 60)
 
   treatment_zone <- arms %>%
@@ -158,5 +158,4 @@ record_y_tube <- function(x) {
       sep = "_"
     )
   )
-
 }

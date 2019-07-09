@@ -1,4 +1,4 @@
-#' \code{record_four_arm} - Records data from four-arm olfactometers
+#' Records data from four-arm olfactometers
 #' @name record_four_arm
 #'
 #' @param x Leave blank
@@ -47,7 +47,6 @@
 #' @export
 #'
 record_four_arm <- function(x) {
-
   user <- readline("User initials: ")
 
   year <- readline("Year: ")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/record_four_arm.R
 \name{record_four_arm}
 \alias{record_four_arm}
-\title{\code{record_four_arm} - Records data from four-arm olfactometers}
+\title{Records data from four-arm olfactometers}
 \usage{
 record_four_arm(x)
 }
@@ -15,7 +15,7 @@ individual's movements in a four-arm olfactometer, returing a summary
 table in the console and exporting an .xlsx file containing the results.
 }
 \description{
-\code{record_four_arm} - Records data from four-arm olfactometers
+Records data from four-arm olfactometers
 }
 \examples{
 \dontrun{> library(olfactometeR)
