@@ -115,6 +115,6 @@ Olfactometer zone: 1
 |        2       |              NA            |              NA            |      T      |
 ```
 
-## The future ::crystal_ball::
+## The future :crystal_ball:
 
 There are a number of features I intend to develop for `olfactometeR` to help streamline data analysis and visualisation for behavioural experiments using olfactometery. If you have any suggestions or if you discover any issues please report them! 

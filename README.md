@@ -130,7 +130,7 @@ Y-tube olfactometer example:
     |        1       |            99.97           |             1.67           |             |
     |        2       |              NA            |              NA            |      T      |
 
-## The future ::crystal\_ball::
+## The future :crystal\_ball:
 
 There are a number of features I intend to develop for `olfactometeR` to
 help streamline data analysis and visualisation for behavioural
