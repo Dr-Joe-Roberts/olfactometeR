@@ -7,8 +7,7 @@
 record_y_tube()
 }
 \value{
-code{record_y_tube} returns a summary table in the console and exports
-an .xlsx file containing these values to the user's working directory.
+code{record_y_tube} returns a summary table in the console.
 }
 \description{
 \code{record_y_tube} allows the user to record the choices made by

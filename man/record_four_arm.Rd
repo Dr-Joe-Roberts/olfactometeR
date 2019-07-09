@@ -8,8 +8,7 @@ record_four_arm()
 }
 \value{
 \code{record_four_arm} returns a summary table of a study subject's movements
-recorded in a four-arm olfactometer to the console and exports a .xlsx file containing
-these values to the user's working directory.
+recorded in a four-arm olfactometer to the console.
 }
 \description{
 \code{record_four_arm} allows the user to interactively record the movements

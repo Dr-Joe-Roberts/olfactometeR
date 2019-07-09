@@ -16,8 +16,7 @@
 #'
 #' @usage record_y_tube()
 #'
-#' @return code{record_y_tube} returns a summary table in the console and exports
-#' an .xlsx file containing these values to the user's working directory.
+#' @return code{record_y_tube} returns a summary table in the console.
 #'
 #' @examples
 #' \dontrun{> library(olfactometeR)
@@ -157,16 +156,4 @@ record_y_tube <- function() {
   )
 
   base::print(final_table)
-
-  rio::export(
-    results_table,
-    paste(
-      user,
-      year,
-      experiment,
-      replicate,
-      "Y_Tube_Olfactometer_Recording_Summary.xlsx",
-      sep = "_"
-    )
-  )
 }

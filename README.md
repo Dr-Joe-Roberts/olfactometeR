@@ -23,7 +23,7 @@ at Keele University to replace the outdated software packages that do
 not run on modern operating systems.
 
 **DISCLAIMER:** `olfactometeR` is under active development and not all
-features are optimised or available at present.
+features are optimised or available at present\!
 
 ## Installation
 
@@ -53,7 +53,8 @@ each arm as well as a central zone, with each zone corresponding to a
 numerical key from `1:5`. When a study subject leaves a zone, the user
 must use the numerical key corresponding to the departed zone to record
 the correct zone. When the observation period is over, the user can end
-the recording process by pressing `t`. At present the
+the recording process by pressing `t`. Once recording has ended a
+summary results tabled will be displayed in the console. At present the
 `record_four_arm()` function is able to accomodate up to two treatment
 arms.
 
@@ -108,7 +109,8 @@ pre-determined line to indicate a decision has been made the user must
 use the numerical key corresponding to the entered olfactometer arm to
 record the individual as have made a choice. Recording will
 automatically end once a choice has been made and entered into the
-console.
+console. Once recording has ended a summary results tabled will be
+displayed in the console.
 
 Below is a data collection example for a Y-tube olfactometer:
 

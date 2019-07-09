@@ -18,8 +18,7 @@
 #' @usage record_four_arm()
 #'
 #' @return \code{record_four_arm} returns a summary table of a study subject's movements
-#' recorded in a four-arm olfactometer to the console and exports a .xlsx file containing
-#' these values to the user's working directory.
+#' recorded in a four-arm olfactometer to the console.
 #'
 #' @examples
 #' \dontrun{
@@ -235,18 +234,6 @@ record_four_arm <- function() {
   )
 
   base::print(final_table)
-
-  rio::export(
-    results_table,
-    paste(
-      user,
-      year,
-      experiment,
-      replicate,
-      "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-      sep = "_"
-    )
-  )
  }
 
   else if (no_treatment_arms == 2) {
@@ -371,17 +358,5 @@ record_four_arm <- function() {
     )
 
     base::print(final_table)
-
-    rio::export(
-      results_table,
-      paste(
-        user,
-        year,
-        experiment,
-        replicate,
-        "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-        sep = "_"
-      )
-    )
   }
 }

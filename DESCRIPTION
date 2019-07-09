@@ -21,7 +21,6 @@ Imports:
     readr,
     dplyr,
     tidyr,
-    rio,
     knitr,
     tibble,
     magrittr,
