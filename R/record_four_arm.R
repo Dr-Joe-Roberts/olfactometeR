@@ -1,4 +1,4 @@
-#' Record movement data from four-arm olfactometer experiments
+#' Record behavioural data from four-arm olfactometer experiments
 #' @name record_four_arm
 #'
 #' @description \code{record_four_arm} allows the user to interactively record the movements
@@ -6,8 +6,8 @@
 #'
 #' Upon executing \code{record_four_arm} the user will be prompted in the console to enter the
 #' following information before recording: User initials', 'Year of experiment',
-#' 'Experiment number', 'Replicate number', 'Number of treatment arms' and
-#' 'Olfactometer arm containing treatment'.
+#' 'Experiment number', 'Replicate number', 'Centre zone assignment', 'Number
+#' of treatment arms' and Olfactometer arm containing treatment'.
 #'
 #' Four-arm olfactometers are typically divided into five unique zones (one for each arm
 #' as well as a central zone), with each zone corresponding to a numerical
