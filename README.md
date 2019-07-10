@@ -37,16 +37,22 @@ devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 
 ## Using `olfactometeR`
 
-> Until a more stable release of `olfactometeR` is released please fork
+> Until a more stable version of `olfactometeR` is released please fork
 > this repo and use your version for stability. Changes made here are
-> likely to be sporadic but drastic. Otherwise, use this repo at your
-> own discression\!
+> likely to be sporadic but drastic. Otherwise, use at your own
+> discression\!
 
-Currently there are two functions available for data collection, which
-allow the user to interact with the console to record the behavioural
-response of their study subject.
+Currently there are three functions available for data collection. These
+functions allow the user to interact with the R console to record the
+behavioural response of their study subject:
 
-#### 1\. `record_four_arm()` for experiments using four-arm olfactometers
+1.  `record_four_arm()`: collecting data from four-arm olfactometers
+2.  `record_six_arm()`: collecting data from six-arm olfactometers
+3.  `record_y_tube()`: collecing data from Y-tube olfactometers
+
+## Examples
+
+##### 1\. `record_four_arm()` for experiments using four-arm olfactometers
 
 Four-arm olfactometers are conventionally split into five zones, one for
 each arm as well as a central zone, with each zone corresponding to a
@@ -57,7 +63,7 @@ user can end the recording process by pressing `t`, which will display a
 summary results table in the console. At present the `record_four_arm()`
 function is able to accomodate up to two treatment arms.
 
-Four-arm olfactometer with one treatment arm example:
+Example:
 
     # One treatment arm
     
@@ -99,7 +105,7 @@ Four-arm olfactometer with one treatment arm example:
     |        4        |       29.18       |       0.49        |          2           |             |
     |        5        |      109.45       |       1.82        |          2           |             |
 
-#### 2\. `record_y_tube()` for experiments using Y-tube olfactometers
+##### 2\. `record_y_tube()` for experiments using Y-tube olfactometers
 
 Each of the two Y-tube olfactometer arm corresponds to a numerical key,
 `1` or `2`. When a study subject enters one of the olfactometer arms and
@@ -109,7 +115,7 @@ as having made a choice. Recording will automatically end once a choice
 has been made and entered into the console, which will display a summary
 results table in the console.
 
-Y-tube olfactometer example:
+Example:
 
     library(olfactometeR)
     
