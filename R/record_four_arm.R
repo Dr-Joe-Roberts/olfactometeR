@@ -240,7 +240,7 @@ record_four_arm <- function() {
     dplyr::rename("No. of Times Zone Entered" = times_entered)
 
   final_table <- knitr::kable(
-    utils::head(results_table),
+    results_table,
     format = "markdown",
     digits = 2,
     align = "c"
@@ -375,7 +375,7 @@ record_four_arm <- function() {
       dplyr::rename("No. of Times Zone Entered" = times_entered)
 
     final_table <- knitr::kable(
-      utils::head(results_table),
+      results_table,
       format = "markdown",
       digits = 2,
       align = "c"
