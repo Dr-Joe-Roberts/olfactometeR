@@ -19,7 +19,7 @@ behavioural responses of test subjects to volatile chemical stimuli.
 This package is largely written for undergraduate students and
 entomology researchers in the [Bruce Lab at Keele
 University](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship)
-to replace the outdated software packages that do not run on modern
+to replace outdated software programmes that do not run on modern
 operating systems, but may be useful for other researchers.
 
 **DISCLAIMER:** `olfactometeR` is under active development and not all
@@ -38,9 +38,9 @@ devtools::install_github("Dr-Joe-Roberts/olfactometeR")
 ## Using `olfactometeR`
 
 > Until a more stable release of `olfactometeR` is released please fork
-> this repo and use your version to ensure some semblance of stability.
-> Changes made here are likely to be sporadic but drastic. Otherwise,
-> use this repo at your own discression\!
+> this repo and use your version for stability. Changes made here are
+> likely to be sporadic but drastic. Otherwise, use this repo at your
+> own discression\!
 
 Currently there are two functions available for data collection, which
 allow the user to interact with the console to record the behavioural
@@ -134,5 +134,5 @@ Y-tube olfactometer example:
 
 There are a number of features I intend to develop for `olfactometeR` to
 help streamline data analysis and visualisation for behavioural
-experiments using olfactometry. If you have any suggestions or if you
-discover any issues please report them\!
+experiments using olfactometry. If you have any feature suggestions or
+if you discover any issues please report them\!
