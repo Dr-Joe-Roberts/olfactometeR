@@ -32,8 +32,8 @@
 #' Year: 2019
 #' Experiment number: 1
 #' Replicate number: 1
-#' Number of treatment arms (1/2): 1
-#' Olfactometer arm containing treatment (1/2/3/4): 2
+#' Number of treatment arms (1:2): 1
+#' Olfactometer arm containing treatment (1:4): 2
 #' Press any key to begin collecting data:
 #' Olfactometer zone: 5
 #' 98.08 sec elapsed
@@ -72,9 +72,9 @@
 #' Year: 2019
 #' Experiment number: 1
 #' Replicate number: 1
-#' Number of treatment arms (1/2): 2
-#' Olfactometer arm containing treatment one (1/2/3/4): 1
-#' Olfactometer arm containing treatment two (1/2/3/4): 4
+#' Number of treatment arms (1:2): 2
+#' Olfactometer arm containing treatment one (1:4): 1
+#' Olfactometer arm containing treatment two (1:4): 4
 #' Press any key to begin collecting data:
 #' Olfactometer zone: 5
 #' 33.94 sec elapsed
@@ -112,12 +112,12 @@ record_four_arm <- function() {
 
   replicate <- readline("Replicate number: ")
 
-  central_zone <- readline("Centre zone (1/2/3/4/5): ")
+  central_zone <- readline("Centre zone (1:5): ")
 
-  no_treatment_arms <- readline("Number of treatment arms (1/2): ")
+  no_treatment_arms <- readline("Number of treatment arms (1:2): ")
 
   if (no_treatment_arms == 1){
-    treatment_arm <- readline("Olfactometer arm containing treatment (1/2/3/4/5): ")
+    treatment_arm <- readline("Olfactometer arm containing treatment (1:5): ")
 
   start_timer <- readline("Press any key to begin data collection: ")
 
@@ -250,9 +250,9 @@ record_four_arm <- function() {
  }
 
   else if (no_treatment_arms == 2) {
-    treatment_arm_one <- readline("Olfactometer arm containing treatment one (1/2/3/4/5): ")
+    treatment_arm_one <- readline("Olfactometer arm containing treatment one (1:5): ")
 
-    treatment_arm_two <- readline("Olfactometer arm containing treatment two (1/2/3/4/5): ")
+    treatment_arm_two <- readline("Olfactometer arm containing treatment two (1:5): ")
 
     start_timer <- readline("Press any key to begin data collection: ")
 

@@ -25,7 +25,7 @@
 #' Year: 2019
 #' Experiment number: 1
 #' Replicate number: 1
-#' Olfactometer arm containing treatment: 2
+#' Olfactometer arm containing treatment (1:2): 2
 #' Press any key to begin recording data:
 #' Olfactometer zone: 1
 #' 99.97 sec elapsed
@@ -49,7 +49,7 @@ record_y_tube <- function() {
   replicate <- readline("Replicate number: ")
 
   treatment_arm <-
-    readline("Olfactometer arm containing treatment: ")
+    readline("Olfactometer arm containing treatment (1:2): ")
 
   start_timer <- readline("Press any key to begin recording data: ")
 
