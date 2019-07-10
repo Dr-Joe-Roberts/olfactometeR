@@ -3,7 +3,7 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# `olfactometeR` - Streamlined data collection for behavioural experiments using olfactometry
+# `olfactometeR` - Streamlined data collection for olfactometry behavioural experiments
 
 <!-- badges: start -->
 
@@ -13,14 +13,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
 <!-- badges: end -->
 
-`olfactometeR` provides interactive, easy to use functions that
-facilitate data collection for experiments using olfactometers to test
-behavioural responses of test subjects to volatile chemical stimuli.
-This package is largely written for undergraduate students and
-entomology researchers in the [Bruce Lab at Keele
+`olfactometeR` provides easy to use functions that facilitate data
+collection for experiments using olfactometers to study the behavioural
+responses of test subjects to volatile chemical stimuli under laboratory
+conditions. This package is largely written for undergraduate students
+and entomology researchers in the [Bruce Lab at Keele
 University](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship)
 to replace outdated software programmes that do not run on modern
-operating systems, but may be useful for other researchers.
+operating systems.
 
 **DISCLAIMER:** `olfactometeR` is under active development and not all
 features are optimised or available at present.
