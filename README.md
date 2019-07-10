@@ -3,7 +3,7 @@
 
 <img width="120px" alt="olfactometeR logo" align="right" src="man/figures/logo.png">
 
-# `olfactometeR` - Streamlined data collection for behavioural experiments using olfactometery
+# `olfactometeR` - Streamlined data collection for behavioural experiments using olfactometry
 
 <!-- badges: start -->
 
@@ -134,5 +134,5 @@ Y-tube olfactometer example:
 
 There are a number of features I intend to develop for `olfactometeR` to
 help streamline data analysis and visualisation for behavioural
-experiments using olfactometery. If you have any suggestions or if you
+experiments using olfactometry. If you have any suggestions or if you
 discover any issues please report them\!
