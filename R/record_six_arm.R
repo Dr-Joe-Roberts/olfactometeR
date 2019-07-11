@@ -69,6 +69,10 @@ record_six_arm <- function() {
 
   year <- readline("Year: ")
 
+  species <- readline("Study species being tested: ")
+
+  treatment <- readline("Treatment being tested: ")
+
   experiment <- readline("Experiment number: ")
 
   replicate <- readline("Replicate number: ")
