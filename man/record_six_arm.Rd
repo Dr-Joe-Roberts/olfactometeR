@@ -37,9 +37,9 @@ User initials: JR
 Year: 2019
 Experiment number: 1
 Replicate number: 1
-Centre zone (1/2/3/4/5/6/7): 7
+Centre zone (1:7): 7
 Number of treatment arms (1/2): 1
-Olfactometer arm containing treatment (1/2/3/4/5/6/7): 1
+Olfactometer arm containing treatment (1:7): 1
 Press any key to begin recording data:
 Olfactometer zone: 7
 17.58 sec elapsed

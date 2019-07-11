@@ -37,8 +37,8 @@ User initials: JR
 Year: 2019
 Experiment number: 1
 Replicate number: 1
-Number of treatment arms (1/2): 1
-Olfactometer arm containing treatment (1/2/3/4): 2
+Number of treatment arms (1:2): 1
+Olfactometer arm containing treatment (1:4): 2
 Press any key to begin collecting data:
 Olfactometer zone: 5
 98.08 sec elapsed
@@ -77,9 +77,9 @@ User initials: JR
 Year: 2019
 Experiment number: 1
 Replicate number: 1
-Number of treatment arms (1/2): 2
-Olfactometer arm containing treatment one (1/2/3/4): 1
-Olfactometer arm containing treatment two (1/2/3/4): 4
+Number of treatment arms (1:2): 2
+Olfactometer arm containing treatment one (1:4): 1
+Olfactometer arm containing treatment two (1:4): 4
 Press any key to begin collecting data:
 Olfactometer zone: 5
 33.94 sec elapsed
