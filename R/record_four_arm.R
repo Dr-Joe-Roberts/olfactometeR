@@ -110,8 +110,6 @@ record_four_arm <- function() {
 
   species <- readline("Study species being tested: ")
 
-  treatment <- readline("Treatment being tested: ")
-
   experiment <- readline("Experiment number: ")
 
   replicate <- readline("Replicate number: ")
@@ -122,6 +120,8 @@ record_four_arm <- function() {
 
   if (no_treatment_arms == 1) {
     treatment_arm <- readline("Olfactometer arm containing treatment (1:5): ")
+
+    treatment_ID <- readline("Treatment: ")
 
     start_timer <- readline("Press any key to begin data collection: ")
 
@@ -135,8 +135,10 @@ record_four_arm <- function() {
           cbind(
             experiment,
             replicate,
+            species,
             central_zone,
             treatment_arm,
+            treatment_ID,
             olfactometer_zone,
             elapsed$toc - elapsed$tic
           ),
@@ -172,40 +174,40 @@ record_four_arm <- function() {
         sep = "_"
       ),
       delim = " ",
-      col_names = c("A", "B", "C", "D", "E", "G"),
-      col_types = readr::cols("E" = readr::col_integer())
+      col_names = c("A", "B", "C", "D", "E", "G", "H", "I"),
+      col_types = readr::cols("H" = readr::col_integer())
     )
 
     data <- data %>%
-      tidyr::complete(tidyr::nesting(A, B, C, D), E = seq(1, 5, 1L)) %>%
-      dplyr::arrange(is.na(G)) %>%
-      dplyr::mutate(G = tidyr::replace_na(G, 0))
+      tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 5, 1L)) %>%
+      dplyr::arrange(is.na(I)) %>%
+      dplyr::mutate(I = tidyr::replace_na(I, 0))
 
     times_entered <- data %>%
-      tidyr::complete(tidyr::nesting(A, B, C, D), E = seq(1, 5, 1L)) %>%
-      dplyr::arrange(is.na(G)) %>%
-      dplyr::mutate(G = tidyr::replace_na(G, 0)) %>%
-      dplyr::add_count(E) %>%
-      dplyr::mutate(n = (G != 0) * n) %>%
-      dplyr::group_by(E) %>%
+      tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 5, 1L)) %>%
+      dplyr::arrange(is.na(I)) %>%
+      dplyr::mutate(I = tidyr::replace_na(I, 0)) %>%
+      dplyr::add_count(H) %>%
+      dplyr::mutate(n = (I != 0) * n) %>%
+      dplyr::group_by(H) %>%
       dplyr::summarise_at(dplyr::vars(n), .funs = mean) %>%
       dplyr::pull(n)
 
     times_entered <- tibble::tibble(times_entered)
 
     zones <- data %>%
-      dplyr::mutate(control = E != D) %>%
-      dplyr::mutate(arms = E != C)
+      dplyr::mutate(control = H != E) %>%
+      dplyr::mutate(arms = H != D)
 
-    by_zone <- dplyr::group_by(zones, E)
+    by_zone <- dplyr::group_by(zones, H)
 
-    sum_zone_times <- dplyr::summarise(by_zone, time_secs = sum(G)) %>%
+    sum_zone_times <- dplyr::summarise(by_zone, time_secs = sum(I)) %>%
       dplyr::mutate(time_mins = time_secs / 60)
 
     centre_zone <- zones %>%
       dplyr::filter(arms == FALSE) %>%
-      dplyr::mutate("Olfactometer Zone" = E) %>%
-      dplyr::mutate(Centre = sum(G)) %>%
+      dplyr::mutate("Olfactometer Zone" = H) %>%
+      dplyr::mutate(Centre = sum(I)) %>%
       dplyr::mutate("Zone Assignment" = "Centre")
 
     tbl_zero <- centre_zone %>%
@@ -213,8 +215,8 @@ record_four_arm <- function() {
 
     treatment_zone <- zones %>%
       dplyr::filter(control == FALSE) %>%
-      dplyr::mutate("Olfactometer Zone" = E) %>%
-      dplyr::mutate(Treatment = sum(G)) %>%
+      dplyr::mutate("Olfactometer Zone" = H) %>%
+      dplyr::mutate(Treatment = sum(I)) %>%
       dplyr::mutate("Zone Assignment" = "Treatment")
 
     tbl_one <- treatment_zone %>%
@@ -222,8 +224,8 @@ record_four_arm <- function() {
 
     control_zones <- zones %>%
       dplyr::filter(control == TRUE & arms == TRUE) %>%
-      dplyr::mutate("Olfactometer Zone" = E) %>%
-      dplyr::mutate(Treatment = sum(G)) %>%
+      dplyr::mutate("Olfactometer Zone" = H) %>%
+      dplyr::mutate(Treatment = sum(I)) %>%
       dplyr::mutate("Zone Assignment" = "Control")
 
     tbl_two <- control_zones %>%
@@ -237,8 +239,8 @@ record_four_arm <- function() {
     results_table <- dplyr::bind_cols(sum_zone_times, times_entered, ordered_zones)
 
     results_table <- results_table %>%
-      dplyr::select(E, `Zone Assignment`, time_secs, time_mins, times_entered) %>%
-      dplyr::rename("Olfactometer Zone" = E) %>%
+      dplyr::select(H, `Zone Assignment`, time_secs, time_mins, times_entered) %>%
+      dplyr::rename("Olfactometer Zone" = H) %>%
       dplyr::rename("Total Time in Zone (secs)" = time_secs) %>%
       dplyr::rename("Total Time in Zone (mins)" = time_mins) %>%
       dplyr::rename("No. of Times Zone Entered" = times_entered)
@@ -252,30 +254,33 @@ record_four_arm <- function() {
 
     base::print(final_table)
 
-    file_export <- readline("Do you want to save the ouput? ")
+    file_export <- readline("Save the ouput (y/n): ")
 
-    if (file_export == "y")
-
-    rio::export(
-      results_table,
-      paste(
-        user,
-        year,
-        experiment,
-        replicate,
-        "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-        sep = "_"
+    if (file_export == "y") {
+      rio::export(
+        results_table,
+        paste(
+          user,
+          year,
+          experiment,
+          replicate,
+          "Four_Arm_Olfactometer_Recording_Summary.xlsx",
+          sep = "_"
+        )
       )
-    )
-
-    else if (file_export == "n") {
-      print("File has not been saved")}
+    } else if (file_export == "n") {
+      print("Output has not been saved")
+    }
   }
 
   else if (no_treatment_arms == 2) {
     treatment_arm_one <- readline("Olfactometer arm containing treatment one (1:5): ")
 
+    treatment_ID_one <- readline("Treatment one: ")
+
     treatment_arm_two <- readline("Olfactometer arm containing treatment two (1:5): ")
+
+    treatment_ID_two <- readline("Treatment two name: ")
 
     start_timer <- readline("Press any key to begin data collection: ")
 
@@ -288,9 +293,12 @@ record_four_arm <- function() {
           cbind(
             experiment,
             replicate,
+            species,
             central_zone,
             treatment_arm_one,
+            treatment_ID_one,
             treatment_arm_two,
+            treatment_ID_two,
             olfactometer_zone,
             elapsed$toc - elapsed$tic
           ),
@@ -326,64 +334,75 @@ record_four_arm <- function() {
         sep = "_"
       ),
       delim = " ",
-      col_names = c("A", "B", "C", "D", "E", "G", "H"),
-      col_types = readr::cols("G" = readr::col_integer())
+      col_names = c("A", "B", "C", "D", "E", "G", "H", "I", "J", "K"),
+      col_types = readr::cols("J" = readr::col_integer())
     )
 
     data <- data %>%
-      tidyr::complete(tidyr::nesting(A, B, C, D, E), G = seq(1, 5, 1L)) %>%
-      dplyr::arrange(is.na(H)) %>%
-      dplyr::mutate(H = tidyr::replace_na(H, 0))
+      tidyr::complete(tidyr::nesting(A, B, C, D, E, G, H, I), J = seq(1, 5, 1L)) %>%
+      dplyr::arrange(is.na(K)) %>%
+      dplyr::mutate(K = tidyr::replace_na(K, 0))
 
     times_entered <- data %>%
-      tidyr::complete(tidyr::nesting(A, B, C, D, E), G = seq(1, 5, 1L)) %>%
-      dplyr::arrange(is.na(H)) %>%
-      dplyr::mutate(H = tidyr::replace_na(H, 0)) %>%
-      dplyr::add_count(G) %>%
-      dplyr::mutate(n = (H != 0) * n) %>%
-      dplyr::group_by(G) %>%
+      tidyr::complete(tidyr::nesting(A, B, C, D, E, G, H, I), J = seq(1, 5, 1L)) %>%
+      dplyr::arrange(is.na(K)) %>%
+      dplyr::mutate(K = tidyr::replace_na(K, 0)) %>%
+      dplyr::add_count(J) %>%
+      dplyr::mutate(n = (K != 0) * n) %>%
+      dplyr::group_by(J) %>%
       dplyr::summarise_at(dplyr::vars(n), .funs = mean) %>%
       dplyr::pull(n)
 
     times_entered <- tibble::tibble(times_entered)
 
     zones <- data %>%
-      dplyr::mutate(treatment = G %in% c(D, E)) %>%
-      dplyr::mutate(arms = G != C)
+      dplyr::mutate(treatment = J %in% c(E, H)) %>%
+      dplyr::mutate(treatment_one = J == E) %>%
+      dplyr::mutate(treatment_two = J == H) %>%
+      dplyr::mutate(arms = J != D)
 
-    by_zone <- dplyr::group_by(zones, G)
+    by_zone <- dplyr::group_by(zones, J)
 
-    sum_zone_times <- dplyr::summarise(by_zone, time_secs = sum(H)) %>%
+    sum_zone_times <- dplyr::summarise(by_zone, time_secs = sum(K)) %>%
       dplyr::mutate(time_mins = time_secs / 60)
 
     centre_zone <- zones %>%
       dplyr::filter(arms == FALSE) %>%
-      dplyr::mutate("Olfactometer Zone" = G) %>%
-      dplyr::mutate(Centre = sum(H)) %>%
+      dplyr::mutate("Olfactometer Zone" = J) %>%
+      dplyr::mutate(Centre = sum(K)) %>%
       dplyr::mutate("Zone Assignment" = "Centre")
 
     tbl_zero <- centre_zone %>%
       dplyr::select("Olfactometer Zone", "Zone Assignment")
 
-    treatment_zone <- zones %>%
-      dplyr::filter(treatment == TRUE) %>%
-      dplyr::mutate("Olfactometer Zone" = G) %>%
-      dplyr::mutate(Treatment = sum(H)) %>%
-      dplyr::mutate("Zone Assignment" = "Treatment")
+    treatment_one <- zones %>%
+      dplyr::filter(treatment_one == TRUE) %>%
+      dplyr::mutate("Olfactometer Zone" = J) %>%
+      dplyr::mutate(Treatment = sum(K)) %>%
+      dplyr::mutate("Zone Assignment" = "Treatment 1")
 
-    tbl_one <- treatment_zone %>%
+    tbl_one <- treatment_one %>%
+      dplyr::select("Olfactometer Zone", "Zone Assignment")
+
+    treatment_two <- zones %>%
+      dplyr::filter(treatment_two == TRUE) %>%
+      dplyr::mutate("Olfactometer Zone" = J) %>%
+      dplyr::mutate(Treatment = sum(K)) %>%
+      dplyr::mutate("Zone Assignment" = "Treatment 2")
+
+    tbl_two <- treatment_two %>%
       dplyr::select("Olfactometer Zone", "Zone Assignment")
 
     control_zones <- zones %>%
       dplyr::filter(treatment == FALSE & arms == TRUE) %>%
-      dplyr::mutate("Olfactometer Zone" = G) %>%
-      dplyr::mutate(Treatment = sum(H)) %>%
+      dplyr::mutate("Olfactometer Zone" = J) %>%
+      dplyr::mutate(Treatment = sum(K)) %>%
       dplyr::mutate("Zone Assignment" = "Control")
 
-    tbl_two <- control_zones %>%
+    tbl_three <- control_zones %>%
       dplyr::select("Olfactometer Zone", "Zone Assignment")
 
-    results_tbl <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two) %>%
+    results_tbl <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two, tbl_three) %>%
       dplyr::distinct()
 
     ordered_zones <- dplyr::arrange(results_tbl, results_tbl$`Olfactometer Zone`)
@@ -391,8 +410,8 @@ record_four_arm <- function() {
     results_table <- dplyr::bind_cols(sum_zone_times, times_entered, ordered_zones)
 
     results_table <- results_table %>%
-      dplyr::select(G, "Zone Assignment", time_secs, time_mins, times_entered) %>%
-      dplyr::rename("Olfactometer Zone" = G) %>%
+      dplyr::select(J, "Zone Assignment", time_secs, time_mins, times_entered) %>%
+      dplyr::rename("Olfactometer Zone" = J) %>%
       dplyr::rename("Total Time in Zone (secs)" = time_secs) %>%
       dplyr::rename("Total Time in Zone (mins)" = time_mins) %>%
       dplyr::rename("No. of Times Zone Entered" = times_entered)
@@ -406,25 +425,22 @@ record_four_arm <- function() {
 
     base::print(final_table)
 
-        file_export <- readline("Do you want to save the ouput? ")
+    file_export <- readline("Save the ouput (y/n): ")
 
-    if (file_export == "y")
-
-    rio::export(
-      results_table,
-      paste(
-        user,
-        year,
-        experiment,
-        replicate,
-        "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-        sep = "_"
+    if (file_export == "y") {
+      rio::export(
+        results_table,
+        paste(
+          user,
+          year,
+          experiment,
+          replicate,
+          "Four_Arm_Olfactometer_Recording_Summary.xlsx",
+          sep = "_"
+        )
       )
-    )
-
-    else if (file_export == "n") {
-      print("File has not been saved")}
+    } else if (file_export == "n") {
+      print("File has not been saved")
+    }
   }
 }
-
-
