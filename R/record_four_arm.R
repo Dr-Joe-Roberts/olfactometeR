@@ -279,7 +279,7 @@ record_four_arm <- function() {
 
       base::print(final_table)
 
-      file_export <- readline("Save the ouput (y/n): ")
+      file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
         rio::export(
@@ -294,7 +294,7 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        print("Output has not been saved")
+        print("Output has not been saved as an .xlsx file")
       }
     }
 
@@ -482,7 +482,7 @@ record_four_arm <- function() {
 
       base::print(final_table)
 
-      file_export <- readline("Save the ouput (y/n): ")
+      file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
         rio::export(
@@ -497,7 +497,7 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        print("File has not been saved")
+        print("File has not been saved as an .xlsx file")
       }
     }
     else if (user_check == "n") {
