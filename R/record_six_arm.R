@@ -165,12 +165,12 @@ record_six_arm <- function() {
       )
 
       data <- data %>%
-        tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 5, 1L)) %>%
+        tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 7, 1L)) %>%
         dplyr::arrange(is.na(I)) %>%
         dplyr::mutate(I = tidyr::replace_na(I, 0))
 
       times_entered <- data %>%
-        tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 5, 1L)) %>%
+        tidyr::complete(tidyr::nesting(A, B, C, D, E, G), H = seq(1, 7, 1L)) %>%
         dplyr::arrange(is.na(I)) %>%
         dplyr::mutate(I = tidyr::replace_na(I, 0)) %>%
         dplyr::add_count(H) %>%
