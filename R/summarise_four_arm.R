@@ -34,7 +34,7 @@ summarise_four_arm <- function() {
     )
 
     tbl <- files %>%
-      purrr::map_df(~ read_delim(
+      purrr::map_df(~ readr::read_delim(
         .,
         delim = " ",
         col_names = c("A", "B", "C", "D", "E", "G", "H", "I"),
@@ -139,7 +139,7 @@ summarise_four_arm <- function() {
     )
 
     tbl <- files %>%
-      purrr::map_df(~ read_delim(
+      purrr::map_df(~ readr::read_delim(
         .,
         delim = " ",
         col_names = c("A", "B", "C", "D", "E", "G", "H", "I", "J", "K"),
