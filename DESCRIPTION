@@ -25,4 +25,6 @@ Imports:
     tibble,
     magrittr,
     rlang,
-    rio
+    rio,
+    tcltk,
+    purrr
