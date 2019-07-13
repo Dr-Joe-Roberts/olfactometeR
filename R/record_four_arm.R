@@ -294,7 +294,9 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        print("Output has not been saved as an .xlsx file")
+      output_no <- knitr::kable("Output has not been saved as an .xlsx file", col.names = " ")
+
+      base::print(output_no)
       }
     }
 
@@ -497,7 +499,9 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        print("File has not been saved as an .xlsx file")
+      output_no <- knitr::kable("Output has not been saved as an .xlsx file", col.names = " ")
+
+      base::print(output_no)
       }
     }
     else if (user_check == "n") {
