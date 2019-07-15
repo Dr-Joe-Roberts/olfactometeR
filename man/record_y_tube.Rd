@@ -24,20 +24,40 @@ record the individual as making a choice. Recording will automatically terminate
 a choice has been made.
 }
 \examples{
-\dontrun{> library(olfactometeR)
+\dontrun{
+library(olfactometeR)
 record_y_tube()
 User initials: JR
 Year: 2019
+Study species being testsed: "Phytoseiulus persimilis"
 Experiment number: 1
 Replicate number: 1
-Olfactometer arm containing treatment (1:2): 2
-Press any key to begin recording data:
-Olfactometer zone: 1
-99.97 sec elapsed
-|Olfactometer Arm|Time to Reach Arm End (secs)|Time to Reach Arm End (mins)|Treatment Arm|
-|:--------------:|:--------------------------:|:--------------------------:|:-----------:|
-|        1       |            99.97           |             1.67           |             |
-|        2       |              NA            |              NA            |      T      |
+Olfactometer arm containing treatment (1/2): 2
+Treatment: "Linalool"
+
+
+ |Variable                 |User Response             |
+ |:------------------------|:-------------------------|
+ |User initials            |JR                        |
+ |Study year               |2030                      |
+ |Study subject species    |"Phytoseiulus persimilis" |
+ |Experiment no.           |1                         |
+ |Replicate no.            |1                         |
+ |Treatment arm assignment |2                         |
+ |Treatment                |"linalool"                |
+
+ Are the entered details correct (y/n): y
+ Press any key to begin recording data:
+ Olfactometer zone: 1
+ 29.2 sec elapsed
+
+
+ |Olfactometer Arm|Zone Assignment|Time to Reach Arm End (secs)|Time to Reach Arm End (mins)|
+ |:--------------:|:-------------:|:--------------------------:|:--------------------------:|
+ |       1        |    Control    |           29.2             |           0.49             |
+ |       2        |   Treatment   |            NA              |            NA              |
+ Save the ouput (y/n): n
+ [1] "Output has not been saved"
 }
 
 }
