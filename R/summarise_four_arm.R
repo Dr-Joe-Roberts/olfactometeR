@@ -15,7 +15,23 @@
 #'
 #' @examples
 #' \dontrun{
-#' Example goes here.
+#' library(olfactometeR)
+#' summarise_four_arm()
+#' Number of treatment arms (1/2): 1
+#'
+#'
+#' | Replicate | Centre | Treatment | Control 1 | Control 2 | Control 3 | Control mean |
+#' |:---------:|:------:|:---------:|:---------:|:---------:|:---------:|:------------:|
+#' |     1     | 72.52  |   4.83    |   0.00    |   90.47   |   4.20    |    31.56     |
+#' |     2     | 20.06  |   3.98    |   0.00    |   21.71   |  366.61   |    129.44    |
+#' |     3     | 62.03  |   1.32    |  129.27   |   79.26   |   0.00    |    69.51     |
+#'
+#' Save the ouput as an .xlsx file? (y/n) n
+#'
+#'
+#' |                          |
+#' |:-------------------------|
+#' |Output has not been saved |
 #' }
 #'
 #' @export
