@@ -27,5 +27,4 @@ Imports:
     rlang,
     rio,
     tcltk,
-    purrr,
-    gt
+    purrr

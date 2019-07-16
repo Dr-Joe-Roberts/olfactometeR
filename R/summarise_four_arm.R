@@ -125,41 +125,14 @@ summarise_four_arm <- function() {
       dplyr::select(G) %>%
       dplyr::distinct()
 
-    gt_tbl <- gt::gt(tbl_six) %>%
-      gt::tab_header(
-        title = "Four-Arm Olfactometer w/ One Treatment Arm",
-        subtitle = paste("Study species:", species_ID, sep = " ")
-      ) %>%
-      gt::tab_spanner("Time spent in zone (secs)",
-        columns = dplyr::vars(
-          "Centre", "Treatment", "Control 1", "Control 2", "Control 3"
-        )
-      ) %>%
-      gt::tab_spanner("Time spent in zones (secs)",
-        columns = dplyr::vars(
-          "Control mean"
-        )
-      ) %>%
-      gt::tab_footnote(
-        footnote = paste(treatment_ID),
-        locations = gt::cells_column_labels(
-          columns = dplyr::vars("Treatment")
-        )
-      ) %>%
-      gt::cols_align(
-        align = "center",
-        columns = TRUE
-      ) %>%
-      gt::fmt_number("Control mean", decimals = 2)
-
-    base::print(gt_tbl)
-
     results_tbl <- knitr::kable(
       tbl_six,
       format = "markdown",
       digits = 2,
       align = "c"
     )
+
+    base::print(results_tbl)
 
     file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
 
@@ -281,53 +254,14 @@ summarise_four_arm <- function() {
         dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Control_1", "Control_2", "Treatment mean", "Control mean") %>%
         dplyr::rename("Treatment 1" = "Treatment_1", "Treatment 2" = "Treatment_2", "Control 1" = "Control_1", "Control 2" = "Control_2")
 
-      species_ID <- zones %>%
-        dplyr::ungroup(B) %>%
-        dplyr::select(C) %>%
-        dplyr::distinct()
-
-      gt_tbl <- gt::gt(tbl_seven) %>%
-        gt::tab_header(
-          title = "Four-Arm Olfactometer w/ Two Treatment Arms",
-          subtitle = paste("Study species:", species_ID, sep = " ")
-        ) %>%
-        gt::tab_spanner("Time spent in zone (secs)",
-          columns = dplyr::vars(
-            "Centre", "Treatment 1", "Treatment 2", "Control 1", "Control 2"
-          )
-        ) %>%
-        gt::tab_spanner("Mean time spent in zones (secs)",
-          columns = dplyr::vars(
-            "Treatment mean", "Control mean"
-          )
-        ) %>%
-        gt::tab_footnote(
-          footnote = paste(treatment_one_ID),
-          locations = gt::cells_column_labels(
-            columns = dplyr::vars("Treatment 1")
-          )
-        ) %>%
-        gt::tab_footnote(
-          footnote = paste(treatment_two_ID),
-          locations = gt::cells_column_labels(
-            columns = dplyr::vars("Treatment 2")
-          )
-        ) %>%
-        gt::cols_align(
-          align = "center",
-          columns = TRUE
-        ) %>%
-        gt::fmt_number("Treatment mean", decimals = 2) %>%
-        gt::fmt_number("Control mean", decimals = 2)
-
-      base::print(gt_tbl)
-
       results_tbl <- knitr::kable(
         tbl_seven,
         format = "markdown",
         digits = 2,
         align = "c"
       )
+
+      base::print(results_tbl)
 
       file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
 
@@ -411,53 +345,14 @@ summarise_four_arm <- function() {
         dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2")
 
 
-      species_ID <- zones %>%
-        dplyr::ungroup(B) %>%
-        dplyr::select(C) %>%
-        dplyr::distinct()
-
-
-      gt_tbl <- gt::gt(tbl_seven) %>%
-        gt::tab_header(
-          title = "Four-Arm Olfactometer w/ Two Treatment Arms",
-          subtitle = paste("Study species:", species_ID, sep = " ")
-        ) %>%
-        gt::tab_spanner("Time spent in zone (secs)",
-          columns = dplyr::vars(
-            "Centre", "Treatment 1", "Treatment 2", "Control 1", "Control 2"
-          )
-        ) %>%
-        gt::tab_spanner("Mean time spent in zones (secs)",
-          columns = dplyr::vars(
-            "Control mean"
-          )
-        ) %>%
-        gt::tab_footnote(
-          footnote = paste(treatment_one_ID),
-          locations = gt::cells_column_labels(
-            columns = dplyr::vars("Treatment 1")
-          )
-        ) %>%
-        gt::tab_footnote(
-          footnote = paste(treatment_two_ID),
-          locations = gt::cells_column_labels(
-            columns = dplyr::vars("Treatment 2")
-          )
-        ) %>%
-        gt::cols_align(
-          align = "center",
-          columns = TRUE
-        ) %>%
-        gt::fmt_number("Control mean", decimals = 2)
-
-      base::print(gt_tbl)
-
       results_tbl <- knitr::kable(
         tbl_seven,
         format = "markdown",
         digits = 2,
         align = "c"
       )
+
+      base::print(results_tbl)
 
       file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
 
