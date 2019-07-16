@@ -108,11 +108,51 @@ summarise_four_arm <- function() {
     tbl_four <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two)
 
     tbl_five <- tbl_four %>%
-      tidyr::spread("Zone", "Time")
+      tidyr::spread("Zone", "Time") %>%
+      dplyr::ungroup(B)
 
     tbl_six <- dplyr::bind_cols(tbl_five, tbl_three) %>%
       dplyr::select("Replicate", "Centre", "Treatment", "Control_1", "Control_2", "Control_3", "Control mean") %>%
       dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2", "Control 3" = "Control_3")
+
+    species_ID <- zones %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(C) %>%
+      dplyr::distinct()
+
+    treatment_ID <- zones %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(G) %>%
+      dplyr::distinct()
+
+    gt_tbl <- gt::gt(tbl_six) %>%
+      gt::tab_header(
+        title = "Four-Arm Olfactometer w/ One Treatment Arm",
+        subtitle = paste("Study species:", species_ID, sep = " ")
+      ) %>%
+      gt::tab_spanner("Time spent in zone (secs)",
+        columns = dplyr::vars(
+          "Centre", "Treatment", "Control 1", "Control 2", "Control 3"
+        )
+      ) %>%
+      gt::tab_spanner("Time spent in zones (secs)",
+        columns = dplyr::vars(
+          "Control mean"
+        )
+      ) %>%
+      gt::tab_footnote(
+        footnote = paste(treatment_ID),
+        locations = gt::cells_column_labels(
+          columns = dplyr::vars("Treatment")
+        )
+      ) %>%
+      gt::cols_align(
+        align = "center",
+        columns = TRUE
+      ) %>%
+      gt::fmt_number("Control mean", decimals = 2)
+
+    base::print(gt_tbl)
 
     results_tbl <- knitr::kable(
       tbl_six,
@@ -121,26 +161,22 @@ summarise_four_arm <- function() {
       align = "c"
     )
 
-    base::print(results_tbl)
-
-    file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
+    file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
 
     if (file_export == "y") {
       rio::export(
-        results_table,
+        results_tbl,
         paste(
           user,
           year,
           experiment,
           replicate,
-          "Experiment_Summary.xlsx",
+          "Experiment_Summary_Data.xlsx",
           sep = "_"
         )
       )
     } else if (file_export == "n") {
-      output_no <- knitr::kable("Output has not been saved", col.names = " ")
-
-      base::print(output_no)
+      base::print("Summary data has not been exported")
     }
   }
 
@@ -237,11 +273,79 @@ summarise_four_arm <- function() {
         dplyr::distinct()
 
       tbl_six <- tbl_five %>%
-        tidyr::spread("Zone", "Time")
+        tidyr::spread("Zone", "Time") %>%
+        dplyr::ungroup(B) %>%
+        dplyr::mutate("Replicate" = as.character(Replicate))
 
       tbl_seven <- dplyr::bind_cols(tbl_six, tbl_two, tbl_four) %>%
-        dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Treatment mean", "Control_1", "Control_2", "Control mean") %>%
+        dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Control_1", "Control_2", "Treatment mean", "Control mean") %>%
         dplyr::rename("Treatment 1" = "Treatment_1", "Treatment 2" = "Treatment_2", "Control 1" = "Control_1", "Control 2" = "Control_2")
+
+      species_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(C) %>%
+        dplyr::distinct()
+
+      gt_tbl <- gt::gt(tbl_seven) %>%
+        gt::tab_header(
+          title = "Four-Arm Olfactometer w/ Two Treatment Arms",
+          subtitle = paste("Study species:", species_ID, sep = " ")
+        ) %>%
+        gt::tab_spanner("Time spent in zone (secs)",
+          columns = dplyr::vars(
+            "Centre", "Treatment 1", "Treatment 2", "Control 1", "Control 2"
+          )
+        ) %>%
+        gt::tab_spanner("Mean time spent in zones (secs)",
+          columns = dplyr::vars(
+            "Treatment mean", "Control mean"
+          )
+        ) %>%
+        gt::tab_footnote(
+          footnote = paste(treatment_one_ID),
+          locations = gt::cells_column_labels(
+            columns = dplyr::vars("Treatment 1")
+          )
+        ) %>%
+        gt::tab_footnote(
+          footnote = paste(treatment_two_ID),
+          locations = gt::cells_column_labels(
+            columns = dplyr::vars("Treatment 2")
+          )
+        ) %>%
+        gt::cols_align(
+          align = "center",
+          columns = TRUE
+        ) %>%
+        gt::fmt_number("Treatment mean", decimals = 2) %>%
+        gt::fmt_number("Control mean", decimals = 2)
+
+      base::print(gt_tbl)
+
+      results_tbl <- knitr::kable(
+        tbl_seven,
+        format = "markdown",
+        digits = 2,
+        align = "c"
+      )
+
+      file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
+
+      if (file_export == "y") {
+        rio::export(
+          results_tbl,
+          paste(
+            user,
+            year,
+            experiment,
+            replicate,
+            "Experiment_Summary_Data.xlsx",
+            sep = "_"
+          )
+        )
+      } else if (file_export == "n") {
+        base::print("Summary data has not been exported")
+      }
     }
 
 
@@ -299,40 +403,79 @@ summarise_four_arm <- function() {
         dplyr::distinct()
 
       tbl_six <- tbl_five %>%
-        tidyr::spread("Zone", "Time")
+        tidyr::spread("Zone", "Time") %>%
+        dplyr::ungroup(B)
 
       tbl_seven <- dplyr::bind_cols(tbl_six, tbl_four) %>%
         dplyr::select("Replicate", "Centre", "Treatment 1", "Treatment 2", "Control_1", "Control_2", "Control mean") %>%
         dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2")
-    }
 
-    results_tbl <- knitr::kable(
-      tbl_seven,
-      format = "markdown",
-      digits = 2,
-      align = "c"
-    )
 
-    base::print(results_tbl)
+      species_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(C) %>%
+        dplyr::distinct()
 
-    file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
-    if (file_export == "y") {
-      rio::export(
-        results_table,
-        paste(
-          user,
-          year,
-          experiment,
-          replicate,
-          "Experiment_Summary.xlsx",
-          sep = "_"
-        )
+      gt_tbl <- gt::gt(tbl_seven) %>%
+        gt::tab_header(
+          title = "Four-Arm Olfactometer w/ Two Treatment Arms",
+          subtitle = paste("Study species:", species_ID, sep = " ")
+        ) %>%
+        gt::tab_spanner("Time spent in zone (secs)",
+          columns = dplyr::vars(
+            "Centre", "Treatment 1", "Treatment 2", "Control 1", "Control 2"
+          )
+        ) %>%
+        gt::tab_spanner("Mean time spent in zones (secs)",
+          columns = dplyr::vars(
+            "Control mean"
+          )
+        ) %>%
+        gt::tab_footnote(
+          footnote = paste(treatment_one_ID),
+          locations = gt::cells_column_labels(
+            columns = dplyr::vars("Treatment 1")
+          )
+        ) %>%
+        gt::tab_footnote(
+          footnote = paste(treatment_two_ID),
+          locations = gt::cells_column_labels(
+            columns = dplyr::vars("Treatment 2")
+          )
+        ) %>%
+        gt::cols_align(
+          align = "center",
+          columns = TRUE
+        ) %>%
+        gt::fmt_number("Control mean", decimals = 2)
+
+      base::print(gt_tbl)
+
+      results_tbl <- knitr::kable(
+        tbl_seven,
+        format = "markdown",
+        digits = 2,
+        align = "c"
       )
-    } else if (file_export == "n") {
-      output_no <- knitr::kable("Output has not been saved", col.names = " ")
 
-      base::print(output_no)
+      file_export <- readline("Export the summary data as an .xlsx file? (y/n) ")
+
+      if (file_export == "y") {
+        rio::export(
+          results_tbl,
+          paste(
+            user,
+            year,
+            experiment,
+            replicate,
+            "Experiment_Summary_Data.xlsx",
+            sep = "_"
+          )
+        )
+      } else if (file_export == "n") {
+        base::print("Summary data has not been exported")
+      }
     }
   }
 }
