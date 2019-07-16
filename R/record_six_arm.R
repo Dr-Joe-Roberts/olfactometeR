@@ -112,11 +112,10 @@ record_six_arm <- function() {
       start_timer <- readline("Press any key to begin data collection: ")
 
       while (TRUE) {
-        # open infinite while loop
-        tictoc::tic() # start timer
-        olfactometer_zone <- readline("Olfactometer zone: ") # allow for entry of state
-        if (olfactometer_zone %in% 1:7) { # check if it's acceptable
-          elapsed <- tictoc::toc() # if it is then end timer and record data
+        tictoc::tic()
+        olfactometer_zone <- readline("Olfactometer zone: ")
+        if (olfactometer_zone %in% 1:7) {
+          elapsed <- tictoc::toc()
           utils::write.table(
             cbind(
               experiment,
@@ -141,11 +140,11 @@ record_six_arm <- function() {
             quote = FALSE,
             append = TRUE
           )
-        } else if (olfactometer_zone == "t") { # if input is 't'
-          break # break out of while loop
+        } else if (olfactometer_zone == "t") {
+          break
         } else if (olfactometer_zone < 1 |
           olfactometer_zone > 7 &
-            olfactometer_zone != "t") { # if input is not and accepted state AND is not 't'
+            olfactometer_zone != "t") {
           print("That is not a valid zone, please use numerical keys 1:7 to select valid zones")
         }
       }
