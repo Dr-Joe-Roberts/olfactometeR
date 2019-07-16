@@ -214,7 +214,7 @@ record_y_tube <- function() {
         )
       )
     } else if (file_export == "n") {
-      base::print("Output has not been saved")
+      base::print("Output has not been saved as a .xlsx file")
     }
   }
 

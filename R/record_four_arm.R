@@ -294,7 +294,7 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        base::print("Output has not been saved as an .xlsx file")
+        base::print("Output has not been saved as a .xlsx file")
       }
     }
 
@@ -497,7 +497,7 @@ record_four_arm <- function() {
           )
         )
       } else if (file_export == "n") {
-        base::print("Output has not been saved as an .xlsx file")
+        base::print("Output has not been saved as a .xlsx file")
       }
     }
     else if (user_check == "n") {
