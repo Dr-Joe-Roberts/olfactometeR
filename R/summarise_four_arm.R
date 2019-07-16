@@ -37,7 +37,6 @@
 #' @export
 #'
 summarise_four_arm <- function() {
-
   treatment_arm_no <- readline("Number of treatment arms (1/2): ")
 
   if (treatment_arm_no == 1) {
@@ -175,64 +174,137 @@ summarise_four_arm <- function() {
       dplyr::mutate(arms = J != D) %>%
       dplyr::arrange(B)
 
-    centre_zone <- zones %>%
-      dplyr::filter(arms == FALSE) %>%
-      dplyr::group_by(B) %>%
-      dplyr::mutate("Time" = sum(K)) %>%
-      dplyr::mutate("Zone" = "Centre") %>%
-      dplyr::rename("Replicate" = B)
-
-    tbl_zero <- centre_zone %>%
-      dplyr::select("Replicate", "Zone", "Time")
-
-    treatment_one <- zones %>%
-      dplyr::filter(treatment_one == TRUE) %>%
-      dplyr::group_by(B) %>%
-      dplyr::summarise("Time" = sum(K)) %>%
-      dplyr::mutate("Zone" = "Treatment 1") %>%
-      dplyr::rename("Replicate" = B)
-
-    tbl_one <- treatment_one %>%
-      dplyr::select("Replicate", "Zone", "Time")
-
-    treatment_two <- zones %>%
-      dplyr::filter(treatment_two == TRUE) %>%
-      dplyr::group_by(B) %>%
-      dplyr::summarise("Time" = sum(K)) %>%
-      dplyr::mutate("Zone" = "Treatment 2") %>%
-      dplyr::rename("Replicate" = B)
-
-    tbl_two <- treatment_two %>%
-      dplyr::select("Replicate", "Zone", "Time")
-
-    control_zones <- zones %>%
-      dplyr::filter(treatment == FALSE & arms == TRUE) %>%
-      dplyr::group_by(B, J) %>%
-      dplyr::summarise("Time" = sum(K)) %>%
-      dplyr::mutate("Control", 1:2) %>%
-      dplyr::mutate("Zone" = paste0("Control", "_", 1:2)) %>%
-      dplyr::rename("Replicate" = B)
-
-    tbl_three <- control_zones %>%
-      dplyr::select("Replicate", "Zone", "Time")
-
-    control_mean <- control_zones %>%
-      dplyr::group_by(Replicate) %>%
-      dplyr::mutate("Control mean" = mean(Time))
-
-    tbl_four <- control_mean %>%
-      dplyr::select("Replicate", "Control mean") %>%
+    treatment_one_ID <- zones %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(G) %>%
       dplyr::distinct()
 
-    tbl_five <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two, tbl_three) %>%
+    treatment_two_ID <- zones %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(I) %>%
       dplyr::distinct()
 
-    tbl_six <- tbl_five %>%
-      tidyr::spread("Zone", "Time")
+    if (treatment_one_ID == treatment_two_ID) {
+      centre_zone <- zones %>%
+        dplyr::filter(arms == FALSE) %>%
+        dplyr::group_by(B) %>%
+        dplyr::mutate("Time" = sum(K)) %>%
+        dplyr::mutate("Zone" = "Centre") %>%
+        dplyr::rename("Replicate" = B)
 
-    tbl_seven <- dplyr::bind_cols(tbl_six, tbl_four) %>%
-      dplyr::select("Replicate", "Centre", "Treatment 1", "Treatment 2", "Control_1", "Control_2", "Control mean") %>%
-      dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2")
+      tbl_zero <- centre_zone %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      treatment_zones <- zones %>%
+        dplyr::filter(treatment == TRUE & arms == TRUE) %>%
+        dplyr::group_by(B, J) %>%
+        dplyr::summarise("Time" = sum(K)) %>%
+        dplyr::mutate("Treatment", 1:2) %>%
+        dplyr::mutate("Zone" = paste0("Treatment", "_", 1:2)) %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_one <- treatment_zones %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      treatment_mean <- treatment_zones %>%
+        dplyr::group_by(Replicate) %>%
+        dplyr::mutate("Treatment mean" = mean(Time))
+
+      tbl_two <- treatment_mean %>%
+        dplyr::select("Replicate", "Treatment mean") %>%
+        dplyr::distinct()
+
+      control_zones <- zones %>%
+        dplyr::filter(treatment == FALSE & arms == TRUE) %>%
+        dplyr::group_by(B, J) %>%
+        dplyr::summarise("Time" = sum(K)) %>%
+        dplyr::mutate("Control", 1:2) %>%
+        dplyr::mutate("Zone" = paste0("Control", "_", 1:2)) %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_three <- control_zones %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      control_mean <- control_zones %>%
+        dplyr::group_by(Replicate) %>%
+        dplyr::mutate("Control mean" = mean(Time))
+
+      tbl_four <- control_mean %>%
+        dplyr::select("Replicate", "Control mean") %>%
+        dplyr::distinct()
+
+      tbl_five <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_three) %>%
+        dplyr::distinct()
+
+      tbl_six <- tbl_five %>%
+        tidyr::spread("Zone", "Time")
+
+      tbl_seven <- dplyr::bind_cols(tbl_six, tbl_two, tbl_four) %>%
+        dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Treatment mean", "Control_1", "Control_2", "Control mean") %>%
+        dplyr::rename("Treatment 1" = "Treatment_1", "Treatment 2" = "Treatment_2", "Control 1" = "Control_1", "Control 2" = "Control_2")
+    }
+
+
+    if (treatment_one_ID != treatment_two_ID) {
+      centre_zone <- zones %>%
+        dplyr::filter(arms == FALSE) %>%
+        dplyr::group_by(B) %>%
+        dplyr::mutate("Time" = sum(K)) %>%
+        dplyr::mutate("Zone" = "Centre") %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_zero <- centre_zone %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      treatment_one <- zones %>%
+        dplyr::filter(treatment_one == TRUE) %>%
+        dplyr::group_by(B) %>%
+        dplyr::summarise("Time" = sum(K)) %>%
+        dplyr::mutate("Zone" = "Treatment 1") %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_one <- treatment_one %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      treatment_two <- zones %>%
+        dplyr::filter(treatment_two == TRUE) %>%
+        dplyr::group_by(B) %>%
+        dplyr::summarise("Time" = sum(K)) %>%
+        dplyr::mutate("Zone" = "Treatment 2") %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_two <- treatment_two %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      control_zones <- zones %>%
+        dplyr::filter(treatment == FALSE & arms == TRUE) %>%
+        dplyr::group_by(B, J) %>%
+        dplyr::summarise("Time" = sum(K)) %>%
+        dplyr::mutate("Control", 1:2) %>%
+        dplyr::mutate("Zone" = paste0("Control", "_", 1:2)) %>%
+        dplyr::rename("Replicate" = B)
+
+      tbl_three <- control_zones %>%
+        dplyr::select("Replicate", "Zone", "Time")
+
+      control_mean <- control_zones %>%
+        dplyr::group_by(Replicate) %>%
+        dplyr::mutate("Control mean" = mean(Time))
+
+      tbl_four <- control_mean %>%
+        dplyr::select("Replicate", "Control mean") %>%
+        dplyr::distinct()
+
+      tbl_five <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two, tbl_three) %>%
+        dplyr::distinct()
+
+      tbl_six <- tbl_five %>%
+        tidyr::spread("Zone", "Time")
+
+      tbl_seven <- dplyr::bind_cols(tbl_six, tbl_four) %>%
+        dplyr::select("Replicate", "Centre", "Treatment 1", "Treatment 2", "Control_1", "Control_2", "Control mean") %>%
+        dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2")
+    }
 
     results_tbl <- knitr::kable(
       tbl_seven,
