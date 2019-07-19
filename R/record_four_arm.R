@@ -266,35 +266,44 @@ record_four_arm <- function() {
       results_table <- results_table %>%
         dplyr::select(H, `Zone Assignment`, time_secs, time_mins, times_entered) %>%
         dplyr::rename("Olfactometer Zone" = H) %>%
-        dplyr::rename("Total Time in Zone (secs)" = time_secs) %>%
-        dplyr::rename("Total Time in Zone (mins)" = time_mins) %>%
-        dplyr::rename("No. of Times Zone Entered" = times_entered)
+        dplyr::rename("Total Time (secs)" = time_secs) %>%
+        dplyr::rename("Total Time (mins)" = time_mins) %>%
+        dplyr::rename("No. Times Entered" = times_entered)
 
-      final_table <- knitr::kable(
-        results_table,
-        format = "markdown",
-        digits = 2,
-        align = "c"
-      )
+      species_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(C) %>%
+        dplyr::distinct()
 
-      base::print(final_table)
+      treatment_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(G) %>%
+        dplyr::distinct()
+
+      tbl_hux <- huxtable::as_hux(results_table, add_colnames = TRUE) %>%
+        huxtable::theme_article(header_col = FALSE) %>%
+        huxtable::set_caption(paste("Four-arm olfactometer: one treatment arm")) %>%
+        huxtable::set_caption_pos("topcenter") %>%
+        huxtable::set_align("centre") %>%
+        huxtable::set_bold(1, 1:5, FALSE) %>%
+        huxtable::add_footnote(paste("Study species:", species_ID)) %>%
+        huxtable::add_footnote(paste("Treatment:", treatment_ID), border = 0)
+
+      huxtable::number_format(tbl_hux)[-1, 3:4] <- 2
+
+      huxtable::print_screen(tbl_hux, colnames = FALSE)
 
       file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
-        rio::export(
-          results_table,
-          paste(
-            user,
-            year,
-            experiment,
-            replicate,
-            "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-            sep = "_"
-          )
+        huxtable::quick_xlsx(
+          tbl_hux,
+          file = "Four_Arm_Olfactometer_Recording.xlsx",
+          borders = 0.4,
+          open = interactive()
         )
       } else if (file_export == "n") {
-        base::print("Output has not been saved as a .xlsx file")
+        base::print("Output has not been saved")
       }
     }
 
@@ -469,35 +478,50 @@ record_four_arm <- function() {
       results_table <- results_table %>%
         dplyr::select(J, "Zone Assignment", time_secs, time_mins, times_entered) %>%
         dplyr::rename("Olfactometer Zone" = J) %>%
-        dplyr::rename("Total Time in Zone (secs)" = time_secs) %>%
-        dplyr::rename("Total Time in Zone (mins)" = time_mins) %>%
-        dplyr::rename("No. of Times Zone Entered" = times_entered)
+        dplyr::rename("Total Time (secs)" = time_secs) %>%
+        dplyr::rename("Total Time (mins)" = time_mins) %>%
+        dplyr::rename("No. Times Entered" = times_entered)
 
-      final_table <- knitr::kable(
-        results_table,
-        format = "markdown",
-        digits = 2,
-        align = "c"
-      )
+      species_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(C) %>%
+        dplyr::distinct()
 
-      base::print(final_table)
+      treatment_one_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(G) %>%
+        dplyr::distinct()
+
+      treatment_two_ID <- zones %>%
+        dplyr::ungroup(B) %>%
+        dplyr::select(I) %>%
+        dplyr::distinct()
+
+      tbl_hux <- huxtable::as_hux(results_table, add_colnames = TRUE) %>%
+        huxtable::theme_article(header_col = FALSE) %>%
+        huxtable::set_caption(paste("Four-arm olfactometer: two treatment arms")) %>%
+        huxtable::set_caption_pos("topcenter") %>%
+        huxtable::set_align("centre") %>%
+        huxtable::set_bold(1, 1:5, FALSE) %>%
+        huxtable::add_footnote(paste("Study species:", species_ID)) %>%
+        huxtable::add_footnote(paste("Treatment 1:", treatment_one_ID), border = 0) %>%
+        huxtable::add_footnote(paste("Treatment 2:", treatment_two_ID), border = 0)
+
+      huxtable::number_format(tbl_hux)[-1, 3:4] <- 2
+
+      huxtable::print_screen(tbl_hux, colnames = FALSE)
 
       file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
-        rio::export(
-          results_table,
-          paste(
-            user,
-            year,
-            experiment,
-            replicate,
-            "Four_Arm_Olfactometer_Recording_Summary.xlsx",
-            sep = "_"
-          )
+        huxtable::quick_xlsx(
+          tbl_hux,
+          file = "Four_Arm_Olfactomter_Recording.xlsx",
+          borders = 0.4,
+          open = interactive()
         )
       } else if (file_export == "n") {
-        base::print("Output has not been saved as a .xlsx file")
+        base::print("Output has not been saved")
       }
     }
     else if (user_check == "n") {
