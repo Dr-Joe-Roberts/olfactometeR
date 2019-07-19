@@ -28,4 +28,5 @@ Imports:
     rio,
     tcltk,
     purrr,
-    huxtable
+    huxtable,
+    callr
