@@ -109,7 +109,9 @@ record_y_tube <- function() {
           cbind(
             experiment,
             replicate,
+            species,
             treatment_arm,
+            treatment_ID,
             olfactometer_zone,
             elapsed$toc - elapsed$tic
           ),
@@ -188,33 +190,43 @@ record_y_tube <- function() {
     results_table <- results_table %>%
       dplyr::select(G, "Zone Assignment", time_secs, time_mins) %>%
       dplyr::rename("Olfactometer Arm" = G) %>%
-      dplyr::rename("Time to Reach Arm End (secs)" = time_secs) %>%
-      dplyr::rename("Time to Reach Arm End (mins)" = time_mins)
+      dplyr::rename("Time to Arm End (secs)" = time_secs) %>%
+      dplyr::rename("Time to Arm End (mins)" = time_mins)
 
-    final_table <- knitr::kable(
-      format = "markdown",
-      digits = 2,
-      align = "c"
-    )
+    species_ID <- data %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(C) %>%
+      dplyr::distinct()
 
-    base::print(final_table)
+    treatment_ID <- data %>%
+      dplyr::ungroup(B) %>%
+      dplyr::select(E) %>%
+      dplyr::distinct()
+
+    tbl_hux <- huxtable::as_hux(results_table, add_colnames = TRUE) %>%
+      huxtable::theme_article(header_col = FALSE) %>%
+      huxtable::set_caption(paste("Y-Tube olfactometer")) %>%
+      huxtable::set_caption_pos("topcenter") %>%
+      huxtable::set_align("centre") %>%
+      huxtable::set_bold(1, 1:4, FALSE) %>%
+      huxtable::add_footnote(paste("Study species:", species_ID)) %>%
+      huxtable::add_footnote(paste("Treatment:", treatment_ID), border = 0)
+
+    huxtable::number_format(tbl_hux)[-1, 3:4] <- 2
+
+    huxtable::print_screen(tbl_hux, colnames = FALSE)
 
     file_export <- readline("Save the ouput (y/n): ")
 
     if (file_export == "y") {
-      rio::export(
-        results_table,
-        paste(
-          user,
-          year,
-          experiment,
-          replicate,
-          "Y_Tube_Recording_Summary.xlsx",
-          sep = "_"
-        )
+      huxtable::quick_xlsx(
+        tbl_hux,
+        file = "Four_Arm_Olfactometer_Recording.xlsx",
+        borders = 0.4,
+        open = interactive()
       )
     } else if (file_export == "n") {
-      base::print("Output has not been saved as a .xlsx file")
+      base::print("Output has not been saved")
     }
   }
 
