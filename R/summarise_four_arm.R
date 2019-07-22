@@ -154,9 +154,26 @@ summarise_four_arm <- function() {
     file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
     if (file_export == "y") {
+      file_path_name <- base::basename(tools::file_path_sans_ext(files))
+
+      file_path_components <- readr::read_delim(file_path_name, delim = "_", col_names = c("A", "B", "C", "D", "E", "G", "H", "I")) %>%
+        dplyr::select(A, B, C) %>%
+        dplyr::distinct()
+
+      user <- file_path_components %>%
+        dplyr::select(A) %>%
+        base::as.character()
+
+      year <- file_path_components %>%
+        dplyr::select(B) %>%
+        base::as.character()
+
+      experiment_no <- file_path_components %>%
+        dplyr::select(C)
+
       huxtable::quick_xlsx(
         tbl_hux,
-        file = "Experiment_Summary.xlsx",
+        file = paste(user, year, "Four_Arm_Experiment", experiment_no, "Summary.xlsx", sep = "_"),
         borders = 0.4,
         open = interactive()
       )
@@ -300,9 +317,26 @@ summarise_four_arm <- function() {
       file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
+        file_path_name <- base::basename(tools::file_path_sans_ext(files))
+
+        file_path_components <- readr::read_delim(file_path_name, delim = "_", col_names = c("A", "B", "C", "D", "E", "G", "H", "I")) %>%
+          dplyr::select(A, B, C) %>%
+          dplyr::distinct()
+
+        user <- file_path_components %>%
+          dplyr::select(A) %>%
+          base::as.character()
+
+        year <- file_path_components %>%
+          dplyr::select(B) %>%
+          base::as.character()
+
+        experiment_no <- file_path_components %>%
+          dplyr::select(C)
+
         huxtable::quick_xlsx(
           tbl_hux,
-          file = "Experiment_Summary.xlsx",
+          file = paste(user, year, "Four_Arm_Experiment", experiment_no, "Summary.xlsx", sep = "_"),
           borders = 0.4,
           open = interactive()
         )
@@ -407,9 +441,26 @@ summarise_four_arm <- function() {
       file_export <- readline("Save the ouput as an .xlsx file? (y/n) ")
 
       if (file_export == "y") {
+        file_path_name <- base::basename(tools::file_path_sans_ext(files))
+
+        file_path_components <- readr::read_delim(file_path_name, delim = "_", col_names = c("A", "B", "C", "D", "E", "G", "H", "I")) %>%
+          dplyr::select(A, B, C) %>%
+          dplyr::distinct()
+
+        user <- file_path_components %>%
+          dplyr::select(A) %>%
+          base::as.character()
+
+        year <- file_path_components %>%
+          dplyr::select(B) %>%
+          base::as.character()
+
+        experiment_no <- file_path_components %>%
+          dplyr::select(C)
+
         huxtable::quick_xlsx(
           tbl_hux,
-          file = "Experiment_Summary.xlsx",
+          file = paste(user, year, "Four_Arm_Experiment", experiment_no, "Summary.xlsx", sep = "_"),
           borders = 0.4,
           open = interactive()
         )
