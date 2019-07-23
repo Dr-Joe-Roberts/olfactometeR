@@ -99,10 +99,11 @@ summarise_four_arm <- function() {
 
     control_mean <- control_zones %>%
       dplyr::group_by(Replicate) %>%
-      dplyr::mutate("Control mean" = mean(Time))
+      dplyr::mutate("Control mean" = mean(Time)) %>%
+      dplyr::mutate("Control SE" = sd(Time) / sqrt(length(Time)))
 
     tbl_three <- control_mean %>%
-      dplyr::select("Replicate", "Control mean") %>%
+      dplyr::select("Replicate", "Control mean", "Control SE") %>%
       dplyr::distinct()
 
     tbl_four <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two)
@@ -111,8 +112,8 @@ summarise_four_arm <- function() {
       tidyr::spread("Zone", "Time")
 
     tbl_six <- dplyr::bind_cols(tbl_five, tbl_three) %>%
-      dplyr::select("Replicate", "Centre", "Treatment", "Control_1", "Control_2", "Control_3", "Control mean") %>%
-      dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2", "Control 3" = "Control_3", "Control" = "Control mean")
+      dplyr::select("Replicate", "Centre", "Treatment", "Control_1", "Control_2", "Control_3", "Control mean", "Control SE") %>%
+      dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2", "Control 3" = "Control_3", "Control" = "Control mean", "Control" = "Control SE")
 
     species_ID <- zones %>%
       dplyr::ungroup(B) %>%
@@ -129,21 +130,22 @@ summarise_four_arm <- function() {
       huxtable::set_caption(paste("Four-arm olfactometer: one treatment arm w/ one treatment")) %>%
       huxtable::set_caption_pos("topcenter") %>%
       huxtable::set_align("centre") %>%
-      huxtable::insert_row(1, 1, 1, 1, 1, 1, 1) %>%
+      huxtable::insert_row(1, 1, 1, 1, 1, 1, 1, 1) %>%
       huxtable::merge_cells(1, 2:6) %>%
       huxtable::set_contents(2, 1, paste("Replicate")) %>%
       huxtable::set_contents(1, 1, paste(" ")) %>%
       huxtable::set_contents(1, 2, paste("Time spent in zone (secs)")) %>%
-      huxtable::set_contents(1, 7, paste("Mean (secs)")) %>%
+      huxtable::set_contents(1, 7, paste("Mean")) %>%
+      huxtable::set_contents(1, 8, paste("Std. Error")) %>%
       huxtable::set_bottom_border(1, 1, 0) %>%
       huxtable::set_top_border(2, 1, 0) %>%
       huxtable::set_bottom_border(1, 7, 1) %>%
       huxtable::set_top_border(2, 7, 1) %>%
       huxtable::set_align(1, 2, "left") %>%
-      huxtable::set_align(1, 7, "left") %>%
+      huxtable::set_align(1, 7:8, "left") %>%
       huxtable::set_bold(1, 1, FALSE) %>%
-      huxtable::set_bold(1, 2:7, FALSE) %>%
-      huxtable::set_bold(2, 1:7, FALSE) %>%
+      huxtable::set_bold(1, 2:8, FALSE) %>%
+      huxtable::set_bold(2, 1:8, FALSE) %>%
       huxtable::add_footnote(paste("Study species:", species_ID)) %>%
       huxtable::add_footnote(paste("Treatment:", treatment_ID), border = 0)
 
@@ -246,10 +248,11 @@ summarise_four_arm <- function() {
 
       treatment_mean <- treatment_zones %>%
         dplyr::group_by(Replicate) %>%
-        dplyr::mutate("Treatment mean" = mean(Time))
+        dplyr::mutate("Treatment mean" = mean(Time)) %>%
+        dplyr::mutate("Treatment SE" = sd(Time) / sqrt(length(Time)))
 
       tbl_two <- treatment_mean %>%
-        dplyr::select("Replicate", "Treatment mean") %>%
+        dplyr::select("Replicate", "Treatment mean", "Treatment SE") %>%
         dplyr::distinct()
 
       control_zones <- zones %>%
@@ -265,10 +268,11 @@ summarise_four_arm <- function() {
 
       control_mean <- control_zones %>%
         dplyr::group_by(Replicate) %>%
-        dplyr::mutate("Control mean" = mean(Time))
+        dplyr::mutate("Control mean" = mean(Time)) %>%
+        dplyr::mutate("Control SE" = sd(Time) / sqrt(length(Time)))
 
       tbl_four <- control_mean %>%
-        dplyr::select("Replicate", "Control mean") %>%
+        dplyr::select("Replicate", "Control mean", "Control SE") %>%
         dplyr::distinct()
 
       tbl_five <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_three) %>%
@@ -278,8 +282,8 @@ summarise_four_arm <- function() {
         tidyr::spread("Zone", "Time")
 
       tbl_seven <- dplyr::bind_cols(tbl_six, tbl_two, tbl_four) %>%
-        dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Control_1", "Control_2", "Treatment mean", "Control mean") %>%
-        dplyr::rename("Treatment 1" = "Treatment_1", "Treatment 2" = "Treatment_2", "Treatment" = "Treatment mean", "Control" = "Control mean", "Control 1" = "Control_1", "Control 2" = "Control_2")
+        dplyr::select("Replicate", "Centre", "Treatment_1", "Treatment_2", "Control_1", "Control_2", "Treatment mean", "Control mean", "Treatment SE", "Control SE") %>%
+        dplyr::rename("Treatment 1" = "Treatment_1", "Treatment 2" = "Treatment_2", "Treatment" = "Treatment mean", "Control" = "Control mean", "Control 1" = "Control_1", "Control 2" = "Control_2", "Treatment" = "Treatment SE", "Control" = "Control SE")
 
       species_ID <- zones %>%
         dplyr::ungroup(B) %>%
@@ -291,21 +295,26 @@ summarise_four_arm <- function() {
         huxtable::set_caption(paste("Four-arm olfactometer: two treatment arms w/ one treatment")) %>%
         huxtable::set_caption_pos("topcenter") %>%
         huxtable::set_align("centre") %>%
-        huxtable::insert_row(1, 1, 1, 1, 1, 1, 1, 1) %>%
+        huxtable::insert_row(1, 1, 1, 1, 1, 1, 1, 1, 1, 1) %>%
         huxtable::merge_cells(1, 2:6) %>%
         huxtable::merge_cells(1, 7:8) %>%
+        huxtable::merge_cells(1, 9:10) %>%
         huxtable::set_contents(1, 1, paste(" ")) %>%
         huxtable::set_contents(1, 2, paste("Time spent in zone (secs)")) %>%
-        huxtable::set_contents(1, 7, paste("Mean (secs)")) %>%
+        huxtable::set_contents(1, 7, paste("Mean")) %>%
+        huxtable::set_contents(1, 9, paste("Std. Error")) %>%
         huxtable::set_bottom_border(1, 1, 0) %>%
         huxtable::set_top_border(2, 1, 0) %>%
         huxtable::set_bottom_border(1, 7, 1) %>%
         huxtable::set_top_border(2, 7, 1) %>%
+        huxtable::set_bottom_border(1, 9, 1) %>%
+        huxtable::set_top_border(2, 9, 1) %>%
         huxtable::set_align(1, 2, "left") %>%
         huxtable::set_align(1, 7, "left") %>%
+        huxtable::set_align(1, 9, "left") %>%
         huxtable::set_bold(1, 1, FALSE) %>%
-        huxtable::set_bold(1, 2:8, FALSE) %>%
-        huxtable::set_bold(2, 1:8, FALSE) %>%
+        huxtable::set_bold(1, 2:10, FALSE) %>%
+        huxtable::set_bold(2, 1:10, FALSE) %>%
         huxtable::add_footnote(paste("Study species:", species_ID)) %>%
         huxtable::add_footnote(paste("Treatment 1:", treatment_one_ID), border = 0) %>%
         huxtable::add_footnote(paste("Treatment 2:", treatment_two_ID), border = 0)
@@ -389,10 +398,11 @@ summarise_four_arm <- function() {
 
       control_mean <- control_zones %>%
         dplyr::group_by(Replicate) %>%
-        dplyr::mutate("Control mean" = mean(Time))
+        dplyr::mutate("Control mean" = mean(Time)) %>%
+        dplyr::mutate("Control SE" = sd(Time) / sqrt(length(Time)))
 
       tbl_four <- control_mean %>%
-        dplyr::select("Replicate", "Control mean") %>%
+        dplyr::select("Replicate", "Control mean", "Control SE") %>%
         dplyr::distinct()
 
       tbl_five <- dplyr::bind_rows(tbl_zero, tbl_one, tbl_two, tbl_three) %>%
@@ -402,8 +412,8 @@ summarise_four_arm <- function() {
         tidyr::spread("Zone", "Time")
 
       tbl_seven <- dplyr::bind_cols(tbl_six, tbl_four) %>%
-        dplyr::select("Replicate", "Centre", "Treatment 1", "Treatment 2", "Control_1", "Control_2", "Control mean") %>%
-        dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2", "Control" = "Control mean")
+        dplyr::select("Replicate", "Centre", "Treatment 1", "Treatment 2", "Control_1", "Control_2", "Control mean", "Control SE") %>%
+        dplyr::rename("Control 1" = "Control_1", "Control 2" = "Control_2", "Control" = "Control mean", "Control" = "Control SE")
 
       species_ID <- zones %>%
         dplyr::ungroup(B) %>%
@@ -415,21 +425,22 @@ summarise_four_arm <- function() {
         huxtable::set_caption(paste("Four-arm olfactometer: two treatment arms w/ two treatments")) %>%
         huxtable::set_caption_pos("topcenter") %>%
         huxtable::set_align("centre") %>%
-        huxtable::insert_row(1, 1, 1, 1, 1, 1, 1) %>%
+        huxtable::insert_row(1, 1, 1, 1, 1, 1, 1, 1) %>%
         huxtable::merge_cells(1, 2:6) %>%
         huxtable::set_contents(2, 1, paste("Replicate")) %>%
         huxtable::set_contents(1, 1, paste(" ")) %>%
         huxtable::set_contents(1, 2, paste("Time spent in zone (secs)")) %>%
-        huxtable::set_contents(1, 7, paste("Mean (secs)")) %>%
+        huxtable::set_contents(1, 7, paste("Mean")) %>%
+        huxtable::set_contents(1, 8, paste("Std. Error")) %>%
         huxtable::set_bottom_border(1, 1, 0) %>%
         huxtable::set_top_border(2, 1, 0) %>%
         huxtable::set_bottom_border(1, 7, 1) %>%
         huxtable::set_top_border(2, 7, 1) %>%
         huxtable::set_align(1, 2, "left") %>%
-        huxtable::set_align(1, 7, "left") %>%
+        huxtable::set_align(1, 7:8, "left") %>%
         huxtable::set_bold(1, 1, FALSE) %>%
-        huxtable::set_bold(1, 2:7, FALSE) %>%
-        huxtable::set_bold(2, 1:7, FALSE) %>%
+        huxtable::set_bold(1, 2:8, FALSE) %>%
+        huxtable::set_bold(2, 1:8, FALSE) %>%
         huxtable::add_footnote(paste("Study species:", species_ID)) %>%
         huxtable::add_footnote(paste("Treatment 1:", treatment_one_ID), border = 0) %>%
         huxtable::add_footnote(paste("Treatment 2:", treatment_two_ID), border = 0)
