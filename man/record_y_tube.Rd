@@ -26,38 +26,46 @@ a choice has been made.
 \examples{
 \dontrun{
 library(olfactometeR)
+
 record_y_tube()
+
 User initials: JR
 Year: 2019
-Study species being testsed: "Phytoseiulus persimilis"
+Study species being tested: "Myzus"                ## Must be entered between quotation marks!
 Experiment number: 1
-Replicate number: 1
+Replicate number: 2
 Olfactometer arm containing treatment (1/2): 2
-Treatment: "Linalool"
+Treatment: "Limonene (0.1 mg/ml)"                   ## Must be entered between quotation marks!
 
 
- |Variable                 |User Response             |
- |:------------------------|:-------------------------|
- |User initials            |JR                        |
- |Study year               |2030                      |
- |Study subject species    |"Phytoseiulus persimilis" |
- |Experiment no.           |1                         |
- |Replicate no.            |1                         |
- |Treatment arm assignment |2                         |
- |Treatment                |"linalool"                |
+|Variable                 |User Response          |
+|:------------------------|:----------------------|
+|User initials            |JR                     |
+|Study year               |2019                   |
+|Study subject species    |"Myzus"                |
+|Experiment no.           |1                      |
+|Replicate no.            |2                      |
+|Treatment arm assignment |2                      |
+|Treatment                |"Limonene (0.1 mg/ml)" |
 
- Are the entered details correct (y/n): y
- Press any key to begin recording data:
- Olfactometer zone: 1
- 29.2 sec elapsed
+Are the entered details correct (y/n): y
 
+Press any key to begin recording data:
+Olfactometer zone: 2
+3.33 sec elapsed
 
- |Olfactometer Arm|Zone Assignment|Time to Reach Arm End (secs)|Time to Reach Arm End (mins)|
- |:--------------:|:-------------:|:--------------------------:|:--------------------------:|
- |       1        |    Control    |           29.2             |           0.49             |
- |       2        |   Treatment   |            NA              |            NA              |
- Save the ouput (y/n): n
- [1] "Output has not been saved"
+                                  Y-Tube olfactometer
+  ------------------------------------------------------------------------------------
+  Olfactometer Arm   Zone Assignment   Time to Arm End (secs)   Time to Arm End (mins)
+  ------------------------------------------------------------------------------------
+         1               Control
+         2              Treatment               3.33                     0.06
+  ------------------------------------------------------------------------------------
+  Study species: Myzus persicae
+  Treatment: Limonene (0.1 mg/ml)
+
+Save the ouput (y/n): n
+[1] "Output has not been saved"
 }
 
 }

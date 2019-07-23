@@ -19,8 +19,17 @@
 #'
 #' summarise_y_tube()
 #'
-#' Save the ouput as an .xlsx file? (y/n) n
+#'                            Y-Tube Olfactometer
+#' ------------------------------------------------------------------------------
+#'      Arm      No. Individuals Choosing Arm   Mean Time to Make Choice (secs)
+#' ------------------------------------------------------------------------------
+#'   Treatment                2                             128.29
+#'    Control                 1                              5.00
+#' ------------------------------------------------------------------------------
+#'   Study species: Phytoseiulus persimilis
+#'   Treatment: Methyl salicylate
 #'
+#' Save the ouput as an .xlsx file? (y/n) n
 #' [1] "Output has not been saved"
 #' }
 #'
@@ -71,7 +80,7 @@ summarise_y_tube <- function() {
     dplyr::select(B, "Arm", "Time", n) %>%
     dplyr::rename("Replicate" = B) %>%
     dplyr::ungroup(B) %>%
-    dplyr::mutate("Mean time to make choice (secs)" = mean(Time))
+    dplyr::mutate("Mean Time to Make Choice (secs)" = mean(Time))
 
   control_arm <- times_chosen %>%
     dplyr::filter(control == TRUE) %>%
@@ -93,7 +102,7 @@ summarise_y_tube <- function() {
     dplyr::mutate("No. Individuals Choosing Arm" = sum(n))
 
   tbl_five <- tbl_four %>%
-    dplyr::select("Arm", "No. Individuals Choosing Arm", "Mean time to make choice (secs)") %>%
+    dplyr::select("Arm", "No. Individuals Choosing Arm", "Mean Time to Make Choice (secs)") %>%
     dplyr::distinct()
 
   species_ID <- arms %>%

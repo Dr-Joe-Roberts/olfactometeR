@@ -24,8 +24,17 @@ library(olfactometeR)
 
 summarise_y_tube()
 
-Save the ouput as an .xlsx file? (y/n) n
+                           Y-Tube Olfactometer
+------------------------------------------------------------------------------
+     Arm      No. Individuals Choosing Arm   Mean Time to Make Choice (secs)
+------------------------------------------------------------------------------
+  Treatment                2                             128.29
+   Control                 1                              5.00
+------------------------------------------------------------------------------
+  Study species: Phytoseiulus persimilis
+  Treatment: Methyl salicylate
 
+Save the ouput as an .xlsx file? (y/n) n
 [1] "Output has not been saved"
 }
 
