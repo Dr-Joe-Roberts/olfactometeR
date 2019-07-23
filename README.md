@@ -132,6 +132,7 @@ treatment arms.
     Olfactometer zone: 5
     6.32 sec elapsed
     Olfactometer zone: t
+    
                                  Four-arm olfactometer: one treatment arm                              
     ───────────────────────────────────────────────────────────────────────────────────────────────────
       Olfactometer Zone   Zone Assignment   Total Time (secs)   Total Time (mins)   No. Times Entered  
