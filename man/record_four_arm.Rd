@@ -22,8 +22,9 @@ of treatment arms' and Olfactometer arm containing treatment'.
 Four-arm olfactometers are typically divided into five unique zones (one for each arm
 as well as a central zone), with each zone corresponding to a numerical
 key from one to five. When a study subject leaves a zone, the user must use the
-numerical key corresponding to the departed zone to record the correct zone. When the
-observation period is over, the user can terminate the recording process by pressing 't'.
+numerical key corresponding to the departed zone then enter to record the correct zone. When
+the observation period is over, the user can terminate the recording process by pressing 't'
+then enter.
 }
 \examples{
 \dontrun{
