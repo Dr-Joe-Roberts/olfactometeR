@@ -5,7 +5,7 @@
 #' from four-arm olfactometer experiments.
 #'
 #' Upon executing \code{summarise_four_arm} the user will be prompted to select the
-#' experiment replicates they want to summarise. displaying a summary table in the
+#' experiment replicates they want to summarise, displaying a summary table in the
 #' console that can be exported as a .xlsx file if required.
 #'
 #' @usage summarise_four_arm()
