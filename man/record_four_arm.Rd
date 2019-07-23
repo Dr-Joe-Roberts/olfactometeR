@@ -30,80 +30,68 @@ observation period is over, the user can terminate the recording process by pres
 
 # One treatment arm
 
-Library(olfactometeR)
-
-record_four_arm()
-User initials: JR
-Year: 2019
-Experiment number: 1
-Replicate number: 1
-Number of treatment arms (1:2): 1
-Olfactometer arm containing treatment (1:4): 2
-Press any key to begin collecting data:
-Olfactometer zone: 5
-98.08 sec elapsed
-Olfactometer zone: 4
-25.61 sec elapsed
-Olfactometer zone: 2
-106.95 sec elapsed
-Olfactometer zone: 4
-3.57 sec elapsed
-Olfactometer zone: 2
-11.85 sec elapsed
-Olfactometer zone: 5
-11.37 sec elapsed
-Olfactometer zone: 3
-55.02 sec elapsed
-Olfactometer zone: 2
-11.72 sec elapsed
-Olfactometer zone: t
-
-
-|Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arm|
-|:---------------:|:-----------------:|:-----------------:|:--------------------:|:-----------:|
-|        1        |        0.00       |       0.00        |          0           |             |
-|        2        |      130.52       |       2.18        |          3           |      T      |
-|        3        |       55.02       |       0.92        |          1           |             |
-|        4        |       29.18       |       0.49        |          2           |             |
-|        5        |      109.45       |       1.82        |          2           |             |
-
-
-# Two treatment arms
-
 library(olfactometeR)
-
 record_four_arm()
+
 User initials: JR
 Year: 2019
+Study species being tested: "Myzus persicae"       ## Must be entered between quotation marks!
 Experiment number: 1
 Replicate number: 1
-Number of treatment arms (1:2): 2
-Olfactometer arm containing treatment one (1:4): 1
-Olfactometer arm containing treatment two (1:4): 4
-Press any key to begin collecting data:
+Centre zone (1:5): 5
+Number of treatment arms (1:2): 1
+Olfactometer arm containing treatment (1:5): 2
+Treatment: "(E)-beta-farnesene (0.1 mg/ml)"        ## Must be entered between quotation marks!
+
+
+|Variable                 |User Response                    |
+|:------------------------|:--------------------------------|
+|User initials            |JR                               |
+|Study year               |2019                             |
+|Study subject species    |"Myzus persicae"                 |
+|Experiment no.           |1                                |
+|Replicate no.            |1                                |
+|Centre zone assignment   |5                                |
+|Treatment arm assignment |2                                |
+|Treatment                |"(E)-beta-farnesene (0.1 mg/ml)" |
+
+Are the entered details correct (y/n): y
+
+Press any key to begin data collection:
 Olfactometer zone: 5
-33.94 sec elapsed
-Olfactometer zone: 4
-23.4 sec elapsed
-Olfactometer zone: 5
-5.91 sec elapsed
+32.86 sec elapsed
 Olfactometer zone: 1
-42.33 sec elapsed
+25.7 sec elapsed
 Olfactometer zone: 5
-28.64 sec elapsed
+19.66 sec elapsed
+Olfactometer zone: 2
+3.21 sec elapsed
 Olfactometer zone: 3
-8.36 sec elapsed
+11.11 sec elapsed
+Olfactometer zone: 4
+251.64 sec elapsed
+Olfactometer zone: 3
+11.41 sec elapsed
+Olfactometer zone: 2
+1.27 sec elapsed
+Olfactometer zone: 5
+6.32 sec elapsed
 Olfactometer zone: t
+                          Four-arm olfactometer: one treatment arm
+-----------------------------------------------------------------------------------------------
+Olfactometer Zone   Zone Assignment   Total Time (secs)   Total Time (mins)   No. Times Entered
+-----------------------------------------------------------------------------------------------
+        1               Control             25.70               0.43                  1
+        2              Treatment            4.48                0.07                  2
+        3               Control             22.52               0.38                  2
+        4               Control            251.64               4.19                  1
+        5               Centre              58.84               0.98                  3
+-----------------------------------------------------------------------------------------------
+  Study species: Myzus persicae
+  Treatment: (E)-beta-farnesene (0.1 mg/ml)
 
-
-|Olfactometer Zone|Time in Zone (secs)|Time in Zone (mins)|No. Times Zone Entered|Treatment Arms|
-|:---------------:|:-----------------:|:-----------------:|:--------------------:|:------------:|
-|        1        |       42.33       |        0.71       |           1          |       T      |
-|        2        |        0.00       |        0.00       |           0          |              |
-|        3        |        8.36       |        0.14       |           1          |              |
-|        4        |       23.40       |        0.39       |           1          |       T      |
-|        5        |       68.49       |        1.14       |           3          |              |
-
+Save the ouput as an .xlsx file? (y/n) n
+[1] "Output has not been saved"
 }
 
 }
