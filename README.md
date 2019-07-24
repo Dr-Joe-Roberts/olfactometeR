@@ -11,6 +11,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
 status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
+[![DOI](https://zenodo.org/badge/193857666.svg)](https://zenodo.org/badge/latestdoi/193857666)
 <!-- badges: end -->
 
 `olfactometeR` provides easy to use functions to facilitate data

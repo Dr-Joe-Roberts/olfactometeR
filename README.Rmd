@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR.svg?branch=master)](https://travis-ci.org/Dr-Joe-Roberts/olfactometeR)
+[![DOI](https://zenodo.org/badge/193857666.svg)](https://zenodo.org/badge/latestdoi/193857666)
 <!-- badges: end -->
 
 `olfactometeR` provides easy to use functions to facilitate data collection for experiments using olfactometers to study the behavioural responses of test subjects to volatile chemical stimuli under laboratory conditions. This package was largely written for undergraduate students and entomology researchers in the [Bruce Lab at Keele University](https://www.keele.ac.uk/lifesci/ourpeople/tobybruce/#research-and-scholarship) to replace outdated software programmes that do not run on modern operating systems. 
