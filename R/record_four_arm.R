@@ -287,7 +287,14 @@ record_four_arm <- function() {
       if (file_export == "y") {
         huxtable::quick_xlsx(
           tbl_hux,
-          file = "Four_Arm_Olfactometer_Recording.xlsx",
+          file = paste(
+              user,
+              year,
+              experiment,
+              replicate,
+              "Four_Arm_Olfactometer_Recording.xlsx",
+              sep = "_"
+            ),
           borders = 0.4,
           open = interactive()
         )
@@ -505,7 +512,14 @@ record_four_arm <- function() {
       if (file_export == "y") {
         huxtable::quick_xlsx(
           tbl_hux,
-          file = "Four_Arm_Olfactomter_Recording.xlsx",
+          file = paste(
+              user,
+              year,
+              experiment,
+              replicate,
+              "Four_Arm_Olfactometer_Recording.xlsx",
+              sep = "_"
+            ),
           borders = 0.4,
           open = interactive()
         )
